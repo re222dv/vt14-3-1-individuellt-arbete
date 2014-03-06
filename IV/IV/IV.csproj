@@ -57,20 +57,84 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Albums\1.jpg" />
+    <Content Include="Content\Images\Albums\2.jpg" />
+    <Content Include="Content\Images\Artists\1.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Pages\AlbumPages\AlbumDelete.aspx" />
+    <Content Include="Pages\ArtistDetails.aspx" />
+    <Content Include="Pages\ArtistPages\ArtistDelete.aspx" />
+    <Content Include="Pages\ArtistPages\NewArtist.aspx" />
+    <Content Include="Pages\Artists.aspx" />
+    <Content Include="Pages\AlbumDetails.aspx" />
     <Content Include="Pages\Albums.aspx" />
-    <Content Include="Pages\Artist.aspx" />
+    <Content Include="Pages\Shared\AlbumSongsControl.ascx" />
+    <Content Include="Pages\Shared\Site.Master" />
+    <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Infrastructure\PageExtensions.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Model\Album.cs" />
     <Compile Include="Model\Artist.cs" />
+    <Compile Include="Model\AlbumArtist.cs" />
     <Compile Include="Model\DAL\AbstractDAL.cs" />
     <Compile Include="Model\DAL\AlbumDAL.cs" />
     <Compile Include="Model\DAL\ArtistDAL.cs" />
     <Compile Include="Model\DAL\SongDAL.cs" />
+    <Compile Include="Model\Art.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Song.cs" />
-    <Compile Include="Model\Validatable.cs" />
+    <Compile Include="App_Infrastructure\Validatable.cs" />
+    <Compile Include="Pages\AlbumPages\AlbumDelete.aspx.cs">
+      <DependentUpon>AlbumDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AlbumPages\AlbumDelete.aspx.designer.cs">
+      <DependentUpon>AlbumDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ArtistDetails.aspx.cs">
+      <DependentUpon>ArtistDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ArtistDetails.aspx.designer.cs">
+      <DependentUpon>ArtistDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ArtistPages\ArtistDelete.aspx.cs">
+      <DependentUpon>ArtistDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ArtistPages\ArtistDelete.aspx.designer.cs">
+      <DependentUpon>ArtistDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ArtistPages\NewArtist.aspx.cs">
+      <DependentUpon>NewArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ArtistPages\NewArtist.aspx.designer.cs">
+      <DependentUpon>NewArtist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Artists.aspx.cs">
+      <DependentUpon>Artists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Artists.aspx.designer.cs">
+      <DependentUpon>Artists.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AlbumDetails.aspx.cs">
+      <DependentUpon>AlbumDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AlbumDetails.aspx.designer.cs">
+      <DependentUpon>AlbumDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Albums.aspx.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -78,24 +142,24 @@
     <Compile Include="Pages\Albums.aspx.designer.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Artist.aspx.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
+    <Compile Include="Pages\Shared\AlbumSongsControl.ascx.cs">
+      <DependentUpon>AlbumSongsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Artist.aspx.designer.cs">
-      <DependentUpon>Artist.aspx</DependentUpon>
+    <Compile Include="Pages\Shared\AlbumSongsControl.ascx.designer.cs">
+      <DependentUpon>AlbumSongsControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Site.Master.cs">
+    <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Site.Master.designer.cs">
+    <Compile Include="Pages\Shared\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\Site.Master" />
+    <Content Include="Scripts\jquery-2.1.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -103,9 +167,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

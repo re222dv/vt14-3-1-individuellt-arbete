@@ -7,19 +7,19 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages {
-    public partial class Albums : Page {
+    public partial class Artists : Page {
         protected void Page_Load(object sender, EventArgs e) {
 
         }
 
-        public IEnumerable<AlbumArtist> ListView_GetData() {
-            var albums = Service.GetAlbums();
+        public IEnumerable<Artist> ListView_GetData() {
+            var artists = Service.GetArtists();
 
-            foreach (var album in albums) {
-                Art.PrepareAlbumArt(album.AlbumID, 80);
+            foreach (var artist in artists) {
+                Art.PrepareArtistArt(artist.ArtistID, 80, 80);
             }
 
-            return albums;
+            return artists;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace IV.Model {
-    public class Album : Validatable {
+    public class AlbumArtist : Validatable {
 
         public int AlbumID {
             get;
@@ -20,6 +20,11 @@ namespace IV.Model {
         [Required]
         [StringLength(20)]
         public String Name {
+            get;
+            set;
+        }
+
+        public String ArtistName {
             get;
             set;
         }

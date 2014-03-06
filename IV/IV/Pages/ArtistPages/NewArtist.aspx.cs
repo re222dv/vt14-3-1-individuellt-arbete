@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace IV.Pages {
-    public partial class Site : System.Web.UI.MasterPage {
+namespace IV.Pages.ArtistPages {
+    public partial class NewArtist : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e) {
 
         }

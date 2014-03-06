@@ -10,6 +10,6 @@
 namespace IV.Pages {
     
     
-    public partial class Albums {
+    public partial class Artists {
     }
 }

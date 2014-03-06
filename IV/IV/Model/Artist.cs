@@ -1,27 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace IV.Model {
     public class Artist : Validatable {
 
-        uint ArtistID {
+        public String Date {
+            get {
+                return Formed.ToString("yyyy-MM-dd");
+            }
+            set {
+                
+            }
+        }
+
+        public int ArtistID {
             get;
             set;
         }
 
-        String Name {
+        [Required]
+        [StringLength(20)]
+        public String Name {
             get;
             set;
         }
 
-        DateTime Formed {
+        [Required]
+        public DateTime Formed {
             get;
             set;
         }
 
-        String Description {
+        [Required]
+        public String Description {
             get;
             set;
         }

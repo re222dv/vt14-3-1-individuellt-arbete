@@ -1,21 +1,20 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Albums.aspx.cs" Inherits="IV.Pages.Albums" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-        <img src="../Content/Metallica_-_Master_of_Puppets_cover.jpg" />
-        <h3>Master of Puppets</h3>
-        <h4>Metallica</h4>
-        <img src="../Content/Metallica_-_Metallica_cover.jpg" />
-        <h3>Metallica</h3>
-        <h4>Metallica</h4>
-    </div>
-    </form>
-</body>
-</html>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Albums.aspx.cs" Inherits="IV.Pages.Albums" %>
+<asp:Content ContentPlaceHolderID="Content" runat="server">
+    <asp:ListView runat="server" DataKeyNames="AlbumID"
+        ItemType="IV.Model.AlbumArtist"
+        SelectMethod="ListView_GetData">
+        <LayoutTemplate>
+            <ul>
+                <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
+            </ul>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <li>
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_80.jpg" %>' />
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
+                    <%# Item.Name %> <%# Item.ArtistName %>
+                </asp:HyperLink>
+            </li>
+        </ItemTemplate>
+    </asp:ListView>
+</asp:Content>
