@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace IV.Pages.Shared {
-    
-    
-    public partial class AlbumControl {
+
+
+    public partial class AlbumSongsControl {
         
         /// <summary>
         /// SongListView control.

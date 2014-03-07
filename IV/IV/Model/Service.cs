@@ -46,7 +46,7 @@ namespace IV.Model {
                 throw new ValidationException();
             }
 
-            if (album.ArtistID == 0) {
+            if (album.AlbumID == 0) {
                 AlbumDAL.InsertAlbum(album);
             } else {
                 AlbumDAL.UpdateAlbum(album);
@@ -99,6 +99,13 @@ namespace IV.Model {
         /// </summary>
         public static void DeleteSong(int songID) {
             SongDAL.DeleteSong(songID);
+        }
+
+        /// <summary>
+        /// Get a song
+        /// </summary>
+        public static Song GetSongById(int songID) {
+            return SongDAL.GetSongById(songID);
         }
 
         /// <summary>

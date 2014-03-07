@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IV.Pages.ArtistPages {
+namespace IV.Pages.AlbumPages {
     
     
-    public partial class NewArtist {
+    public partial class NewAlbum {
         
         /// <summary>
         /// ValidationSummary1 control.

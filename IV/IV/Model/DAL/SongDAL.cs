@@ -28,6 +28,48 @@ namespace IV.Model.DAL {
         }
 
         /// <summary>
+        /// Get a song from the database
+        /// </summary>
+        public static Song GetSongById(int songId) {
+            try {
+                using (SqlConnection conn = CreateConnection()) {
+
+                    SqlCommand cmd = new SqlCommand("appScheme.SongsGet", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@SongID", SqlDbType.Int, 4).Value = songId;
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+
+                        var songIDIndex = reader.GetOrdinal("SongID");
+                        var albumIDIndex = reader.GetOrdinal("AlbumID");
+                        var artistIDIndex = reader.GetOrdinal("ArtistID");
+                        var numberIndex = reader.GetOrdinal("Number");
+                        var nameIndex = reader.GetOrdinal("Name");
+                        var lengthIndex = reader.GetOrdinal("Length");
+
+                        if (reader.Read()) {
+                            return new Song {
+                                SongID = reader.GetInt32(songIDIndex),
+                                AlbumID = reader.GetInt32(albumIDIndex),
+                                ArtistID = reader.GetInt32(artistIDIndex),
+                                Number = reader.GetByte(numberIndex),
+                                Name = reader.GetString(nameIndex),
+                                Length = reader.GetInt16(lengthIndex)
+                            };
+                        }
+                    }
+
+                    return null;
+                }
+            } catch {
+                throw new ApplicationException("An error occured while getting the song from the database.");
+            }
+        }
+
+        /// <summary>
         /// Get an albums songs from the database
         /// </summary>
         public static IEnumerable<Song> GetSongsByAlbumId(int albumID) {
@@ -94,7 +136,8 @@ namespace IV.Model.DAL {
                     song.SongID = (int) cmd.Parameters["@SongID"].Value;
                 }
             } catch {
-                throw new ApplicationException("An error occured while adding the song to the database.");
+                //throw new ApplicationException("An error occured while adding the song to the database.");
+                throw;
             }
         }
 

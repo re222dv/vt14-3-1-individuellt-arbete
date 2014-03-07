@@ -20,6 +20,36 @@ namespace IV.Model {
             PhysicalArtistArtPath = Path.Combine(PhysicalImagesPath, "Artists");
         }
 
+        /// <summary>
+        /// Checks if the image is one of the supported filetypes
+        /// </summary>
+        private static bool IsValidImage(Image image) {
+            if (image == null) {
+                return false;
+            }
+            return image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid;
+        }
+
+        public static void SaveAlbumArt(Stream stream, int albumId) {
+            var image = Image.FromStream(stream);
+
+            if (!IsValidImage(image)) {
+                throw new ArgumentException();
+            }
+
+            image.Save(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}.jpg", albumId)));
+        }
+
+        public static void SaveArtistArt(Stream stream, int artistId) {
+            var image = Image.FromStream(stream);
+
+            if (!IsValidImage(image)) {
+                throw new ArgumentException();
+            }
+
+            image.Save(Path.Combine(PhysicalArtistArtPath, String.Format("{0}.jpg", artistId)));
+        }
+
         public static void PrepareAlbumArt(int albumId, int size) {
             var path = Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, size));
 

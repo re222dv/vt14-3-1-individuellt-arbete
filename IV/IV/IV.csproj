@@ -62,13 +62,15 @@
     <Content Include="Content\Images\Artists\1.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Pages\AlbumPages\AlbumDelete.aspx" />
-    <Content Include="Pages\ArtistDetails.aspx" />
+    <Content Include="Pages\AlbumPages\NewAlbum.aspx" />
+    <Content Include="Pages\ArtistPages\ArtistDetails.aspx" />
     <Content Include="Pages\ArtistPages\ArtistDelete.aspx" />
     <Content Include="Pages\ArtistPages\NewArtist.aspx" />
-    <Content Include="Pages\Artists.aspx" />
-    <Content Include="Pages\AlbumDetails.aspx" />
-    <Content Include="Pages\Albums.aspx" />
+    <Content Include="Pages\ArtistPages\Artists.aspx" />
+    <Content Include="Pages\AlbumPages\AlbumDetails.aspx" />
+    <Content Include="Pages\AlbumPages\Albums.aspx" />
     <Content Include="Pages\Shared\AlbumSongsControl.ascx" />
+    <Content Include="Pages\Shared\EditAlbumSongsControl.ascx" />
     <Content Include="Pages\Shared\Site.Master" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -100,11 +102,18 @@
     <Compile Include="Pages\AlbumPages\AlbumDelete.aspx.designer.cs">
       <DependentUpon>AlbumDelete.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ArtistDetails.aspx.cs">
+    <Compile Include="Pages\AlbumPages\NewAlbum.aspx.cs">
+      <DependentUpon>NewAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AlbumPages\NewAlbum.aspx.designer.cs">
+      <DependentUpon>NewAlbum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ArtistPages\ArtistDetails.aspx.cs">
       <DependentUpon>ArtistDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\ArtistDetails.aspx.designer.cs">
+    <Compile Include="Pages\ArtistPages\ArtistDetails.aspx.designer.cs">
       <DependentUpon>ArtistDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ArtistPages\ArtistDelete.aspx.cs">
@@ -121,25 +130,25 @@
     <Compile Include="Pages\ArtistPages\NewArtist.aspx.designer.cs">
       <DependentUpon>NewArtist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Artists.aspx.cs">
+    <Compile Include="Pages\ArtistPages\Artists.aspx.cs">
       <DependentUpon>Artists.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Artists.aspx.designer.cs">
+    <Compile Include="Pages\ArtistPages\Artists.aspx.designer.cs">
       <DependentUpon>Artists.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AlbumDetails.aspx.cs">
+    <Compile Include="Pages\AlbumPages\AlbumDetails.aspx.cs">
       <DependentUpon>AlbumDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\AlbumDetails.aspx.designer.cs">
+    <Compile Include="Pages\AlbumPages\AlbumDetails.aspx.designer.cs">
       <DependentUpon>AlbumDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Albums.aspx.cs">
+    <Compile Include="Pages\AlbumPages\Albums.aspx.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Albums.aspx.designer.cs">
+    <Compile Include="Pages\AlbumPages\Albums.aspx.designer.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Shared\AlbumSongsControl.ascx.cs">
@@ -148,6 +157,13 @@
     </Compile>
     <Compile Include="Pages\Shared\AlbumSongsControl.ascx.designer.cs">
       <DependentUpon>AlbumSongsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Shared\EditAlbumSongsControl.ascx.cs">
+      <DependentUpon>EditAlbumSongsControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Shared\EditAlbumSongsControl.ascx.designer.cs">
+      <DependentUpon>EditAlbumSongsControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Shared\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

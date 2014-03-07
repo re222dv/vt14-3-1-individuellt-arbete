@@ -16,7 +16,11 @@ namespace IV.Pages {
             var artists = Service.GetArtists();
 
             foreach (var artist in artists) {
-                Art.PrepareArtistArt(artist.ArtistID, 80, 80);
+                try {
+                    Art.PrepareArtistArt(artist.ArtistID, 80, 80);
+                } catch {
+                    //TODO
+                }
             }
 
             return artists;

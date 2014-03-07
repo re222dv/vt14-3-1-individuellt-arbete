@@ -18,7 +18,7 @@ namespace IV.Model {
         }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(35)]
         public String Name {
             get;
             set;

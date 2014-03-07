@@ -17,6 +17,9 @@
             <asp:HyperLink runat="server" NavigateUrl="<%$ RouteUrl:routename=Albums %>">
                 Albums
             </asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="<%$ RouteUrl:routename=ArtistNew %>">
+                New Artist
+            </asp:HyperLink>
         </nav>
         <asp:ContentPlaceHolder ID="Content" runat="server" />
     </div>

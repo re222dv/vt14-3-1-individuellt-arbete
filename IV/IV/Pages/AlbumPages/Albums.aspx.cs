@@ -16,7 +16,11 @@ namespace IV.Pages {
             var albums = Service.GetAlbums();
 
             foreach (var album in albums) {
-                Art.PrepareAlbumArt(album.AlbumID, 80);
+                try {
+                    Art.PrepareAlbumArt(album.AlbumID, 80);
+                } catch {
+                    //TODO
+                }
             }
 
             return albums;

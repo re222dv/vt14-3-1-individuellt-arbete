@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace IV.Pages.ArtistPages {
-    
-    
-    public partial class NewArtist {
+namespace IV.Pages.Shared {
+
+
+    public partial class EditAlbumSongsControl {
         
         /// <summary>
-        /// ValidationSummary1 control.
+        /// SongListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// FormView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView;
+        protected global::System.Web.UI.WebControls.ListView SongListView;
     }
 }

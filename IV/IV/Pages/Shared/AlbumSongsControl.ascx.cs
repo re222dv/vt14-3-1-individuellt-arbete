@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages.Shared {
-    public partial class AlbumControl : System.Web.UI.UserControl {
+    public partial class AlbumSongsControl : System.Web.UI.UserControl {
 
         public String AlbumID {
             get;

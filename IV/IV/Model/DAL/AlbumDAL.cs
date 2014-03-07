@@ -156,7 +156,7 @@ namespace IV.Model.DAL {
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@ArtistID", SqlDbType.Int, 4).Value = album.ArtistID;
-                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 20).Value = album.Name;
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 35).Value = album.Name;
                     cmd.Parameters.Add("@Released", SqlDbType.Date, 4).Value = album.Released;
 
                     cmd.Parameters.Add("@AlbumID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
@@ -183,7 +183,7 @@ namespace IV.Model.DAL {
 
                     cmd.Parameters.Add("@AlbumID", SqlDbType.Int, 4).Value = album.AlbumID;
                     cmd.Parameters.Add("@ArtistID", SqlDbType.Int, 4).Value = album.ArtistID;
-                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 20).Value = album.Name;
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 35).Value = album.Name;
                     cmd.Parameters.Add("@Released", SqlDbType.Date, 4).Value = album.Released;
 
                     conn.Open();
