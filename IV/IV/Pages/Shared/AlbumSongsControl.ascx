@@ -14,4 +14,8 @@
             <td><%#: Item.LengthMinutes %></td>
         </tr>
     </ItemTemplate>
+    <EmptyDataTemplate>
+        <table></table>
+        <span>No songs</span>
+    </EmptyDataTemplate>
 </asp:ListView>

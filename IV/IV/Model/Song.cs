@@ -43,7 +43,7 @@ namespace IV.Model {
 
         public String LengthMinutes {
             get {
-                return String.Format("{0}:{1}", Length / 60, Length % 60);
+                return String.Format("{0}:{1:00}", Length / 60, Length % 60);
             }
             set {
                 var parts = value.Split(':');

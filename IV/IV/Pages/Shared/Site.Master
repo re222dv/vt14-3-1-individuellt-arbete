@@ -5,28 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="../../Content/main.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form" runat="server">
-    <div>
-        <h1>Master</h1>
         <nav>
-            <asp:HyperLink runat="server" NavigateUrl="<%$ RouteUrl:routename=Artists %>">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="<%$ RouteUrl:routename=Artists %>">
                 Artists
             </asp:HyperLink>
-            <asp:HyperLink runat="server" NavigateUrl="<%$ RouteUrl:routename=Albums %>">
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="<%$ RouteUrl:routename=Albums %>">
                 Albums
             </asp:HyperLink>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="<%$ RouteUrl:routename=ArtistNew %>">
+            <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="<%$ RouteUrl:routename=ArtistNew %>">
                 New Artist
             </asp:HyperLink>
         </nav>
-        <asp:Panel ID="SuccessPanel" runat="server">
-            <asp:Label ID="SuccessLabel" runat="server"></asp:Label>
-        </asp:Panel>
-        <asp:ValidationSummary runat="server" />
-        <asp:ContentPlaceHolder ID="Content" runat="server" />
-    </div>
+
+        <div id="container">
+            <asp:Panel ID="SuccessPanel" runat="server">
+                <asp:Label ID="SuccessLabel" runat="server"></asp:Label>
+            </asp:Panel>
+            <asp:ValidationSummary runat="server" />
+            <asp:ContentPlaceHolder ID="Content" runat="server" />
+        </div>
+
+        <footer></footer>
     </form>
 </body>
 </html>

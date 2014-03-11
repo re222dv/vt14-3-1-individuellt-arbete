@@ -4,15 +4,18 @@
         ItemType="IV.Model.AlbumArtist"
         SelectMethod="ListView_GetData">
         <LayoutTemplate>
-            <ul>
+            <ul id="albums">
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
             </ul>
+            <div></div>
         </LayoutTemplate>
         <ItemTemplate>
             <li>
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_80.jpg" %>' />
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
-                    <%# Item.Name %> <%# Item.ArtistName %>
+                    <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
+                    <span class="name"><%# Item.Name %></span>
+                    <span class="artist"><%# Item.ArtistName %></span>
+                    <span class="year"><%# Item.Released.Year %></span>
                 </asp:HyperLink>
             </li>
         </ItemTemplate>

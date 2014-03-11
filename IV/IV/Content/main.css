@@ -1,0 +1,325 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: block;
+    margin: 15px auto;
+
+    width: 959px;
+    height: 50px;
+
+    background: linear-gradient(to bottom, #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%);
+    border: 3px solid #111;
+}
+
+nav a {
+    display: block;
+    float: left;
+
+    width: 100px;
+    height: 50px;
+
+    color: white;
+    border-right: 1px solid #a63f07;
+
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+nav a:hover {
+    background: linear-gradient(to bottom, #f17432 0%,#feccb1 50%,#feccb1 51%,#f17432 100%);
+}
+
+nav a:last-child {
+    float: right;
+    border-left: 1px solid #a63f07;
+    border-right: none;
+}
+
+#container {
+    position: relative;
+    margin: 0 auto 50px auto;
+    padding: 20px;
+
+    width: 920px;
+    min-height: 100%;
+
+    background-color: #ddd9c5;
+    border: 2px solid #111;
+}
+
+#artist {
+    padding-top: 385px;
+}
+
+#album {
+    margin-bottom: 20px;
+}
+
+#album h1 {
+    position: absolute;
+    top: 10px;
+    left: 310px;
+
+    color: #333;
+    font-size: 2.4rem;
+}
+
+#album a {
+    position: absolute;
+    top: 60px;
+    left: 310px;
+
+    color: #333;
+    
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+#album span {
+    position: absolute;
+    top: 135px;
+    left: 312px;
+
+    color: #333;
+
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+#image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 960px;
+    height: 400px;
+    
+    background-size: cover;
+    border-bottom: 2px solid #111;
+}
+
+#artist h1 {
+    position: absolute;
+    top: 310px;
+    left: 10px;
+    padding: 5px 10px;
+
+    color: #ddd;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+
+    box-shadow: 0 0 5px #000;
+    font-size: 2.3rem;
+    text-shadow: 0 0 5px #000;
+}
+
+#container p {
+    padding: 15px;
+
+    background-color: darkgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px #333;
+}
+
+.album {
+    position: relative;
+    margin-top: 40px;
+    width:  100%;
+}
+
+.album img {
+    float: left;
+}
+
+.album a {
+    float: left;
+
+    color: #333;
+    text-decoration: none;
+}
+
+.album a h2 {
+    margin: 5px;
+}
+
+.album span {
+    position: absolute;
+    top: 40px;
+    left: 90px;
+}
+
+#artist table {
+    margin-left: 120px;
+    clear: left;
+
+    width: 600px;
+    border-collapse: collapse;
+}
+
+#container table {
+    margin: 0 auto 30px auto;
+    clear: left;
+
+    width: 600px;
+    border-collapse: collapse;
+}
+
+#container tr {
+    background-color: lightgray;
+}
+
+#container tr:nth-child(2n - 1) {
+    background-color: #B5B5B5;
+}
+
+#container td {
+    padding: 5px;
+}
+
+#container td:first-child {
+    padding-left: 10px;
+}
+
+#container td:last-child {
+    padding-right: 10px;
+    text-align: right;
+}
+
+#year {
+    position: absolute;
+    top: 360px;
+    right: 10px;
+    padding: 5px 10px;
+
+    color: #ddd;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+
+    box-shadow: 0 0 5px #000;
+    text-shadow: 0 0 5px #000;
+}
+
+#controls {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+
+    width: 100%;
+
+    background-color: #444;
+    border-top: 1px solid #000;
+}
+
+#controls a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+#container ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#container ul li {
+    position: relative;
+}
+
+#artists li {
+    margin-top: 15px;
+
+    background-color: darkgray;
+}
+
+#artists li:first-child {
+    margin-top: 0;
+}
+
+#artists .image {
+    width: 240px;
+    height: 100px;
+    
+    background-size: cover;
+}
+
+#artists span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 260px;
+
+    height: 100px;
+    color: #333;
+
+    font-size: 2rem;
+    line-height: 100px;
+    text-decoration: none;
+}
+
+#albums {
+    clear: left;
+}
+
+#albums li {
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 40px;
+
+    width: 280px;
+    height: 327px;
+
+    background-color: #333;
+}
+
+#albums li:first-child, #albums li:nth-child(2), #albums li:nth-child(3) {
+    margin-top: 0;
+}
+
+#albums li:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+#albums img {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+#albums span {
+    position: absolute;
+    left: 10px;
+
+    color: white;
+}
+
+#albums .name {
+    top: 280px;
+}
+
+#albums .artist {
+    top: 302px;
+}
+
+#albums .year {
+    top: 302px;
+    left: auto;
+    right: 10px;
+}
+
+#albums ~ div {
+    clear: left;
+}

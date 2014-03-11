@@ -4,15 +4,15 @@
         ItemType="IV.Model.Artist"
         SelectMethod="ListView_GetData">
         <LayoutTemplate>
-            <ul>
+            <ul id="artists">
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
             </ul>
         </LayoutTemplate>
         <ItemTemplate>
             <li>
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Artists/" + Item.ArtistID + "_80x80.jpg" %>' />
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
-                    <%# Item.Name %>
+                    <div class="image" style='background-image: url(<%#: "../Content/Images/Artists/" + Item.ArtistID + ".jpg" %>)'></div>
+                    <span><%# Item.Name %></span>
                 </asp:HyperLink>
             </li>
         </ItemTemplate>

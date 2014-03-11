@@ -7,9 +7,7 @@ using System.Web;
 
 namespace IV.Model.DAL {
     public class ArtDAL {
-        public const int ALBUM_ART_SMALL = 80;
-        public const int ALBUM_ART_BIG = 250;
-        public const int ARTIST_ART_SMALL = 80;
+        public const int ALBUM_ART = 260;
 
         public static readonly String PhysicalAlbumArtPath;
         public static readonly String PhysicalArtistArtPath;
@@ -74,8 +72,7 @@ namespace IV.Model.DAL {
         /// </summary>
         public static void DeleteAlbumArt(int albumId) {
             DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}.jpg", albumId)));
-            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_SMALL)));
-            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_BIG)));
+            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART)));
         }
 
         /// <summary>
@@ -83,7 +80,6 @@ namespace IV.Model.DAL {
         /// </summary>
         public static void DeleteArtistArt(int artistId) {
             DeleteFile(Path.Combine(PhysicalArtistArtPath, String.Format("{0}.jpg", artistId)));
-            DeleteFile(Path.Combine(PhysicalArtistArtPath, String.Format("{0}_{1}x{2}.jpg", artistId, ARTIST_ART_SMALL, ARTIST_ART_SMALL)));
         }
 
         /// <summary>
@@ -100,8 +96,7 @@ namespace IV.Model.DAL {
             image.Dispose();
             stream.Dispose();
 
-            PrepareAlbumArt(albumId, ALBUM_ART_SMALL);
-            PrepareAlbumArt(albumId, ALBUM_ART_BIG);
+            PrepareAlbumArt(albumId, ALBUM_ART);
         }
 
         /// <summary>
@@ -118,7 +113,7 @@ namespace IV.Model.DAL {
             image.Dispose();
             stream.Dispose();
 
-            PrepareArtistArt(artistId, ARTIST_ART_SMALL, ARTIST_ART_SMALL);
+            //TODO
         }
     }
 }

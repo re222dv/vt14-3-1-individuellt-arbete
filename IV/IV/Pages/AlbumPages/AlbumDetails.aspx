@@ -5,19 +5,23 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <asp:FormView ID="AlbumFormView" runat="server" ItemType="IV.Model.AlbumArtist" DataKeyNames="AlbumID"
-        SelectMethod="AlbumFormView_GetItem" UpdateMethod="AlbumFormView_UpdateItem">
+        SelectMethod="AlbumFormView_GetItem" UpdateMethod="AlbumFormView_UpdateItem" RenderOuterTable="False">
         <ItemTemplate>
-            <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_250.jpg" %>' />
-            <h1><%# Item.Name %></h1>
-            <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
-                <h2><%# Item.ArtistName %></h2>
-            </asp:HyperLink>
-            <%#: Item.Released.Year %>
+            <div id="album">
+                <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
+                <h1><%# Item.Name %></h1>
+                <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
+                    <h2><%# Item.ArtistName %></h2>
+                </asp:HyperLink>
+                <span><%#: Item.Released.Year %></span>
+            </div>
             
             <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
-
-            <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Edit">Edit</asp:LinkButton>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDelete", new {id = Item.AlbumID}) %>'>Delete</asp:HyperLink>
+            
+            <div id="controls">
+                <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Edit">Edit</asp:LinkButton>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDelete", new {id = Item.AlbumID}) %>'>Delete</asp:HyperLink>
+            </div>
         </ItemTemplate>
         <EditItemTemplate>
             Name <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.Name %>'></asp:TextBox>
