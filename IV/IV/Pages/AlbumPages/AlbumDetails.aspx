@@ -13,10 +13,10 @@
                 <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
                     <h2><%# Item.ArtistName %></h2>
                 </asp:HyperLink>
-                <span><%#: Item.Released.Year %></span>
-            </div>
+                <span class="year"><%#: Item.Released.Year %></span>
             
-            <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
+                <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
+            </div>
             
             <div id="controls">
                 <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Edit">Edit</asp:LinkButton>

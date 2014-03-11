@@ -17,7 +17,7 @@
                     SelectMethod="AlbumListView_GetData">
                     <ItemTemplate>
                         <div class="album">
-                            <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_80.jpg" %>' />
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_150.jpg" %>' />
                             <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
                                 <h2><%# Item.Name %></h2>
                             </asp:HyperLink>

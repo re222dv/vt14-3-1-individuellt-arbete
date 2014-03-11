@@ -15,7 +15,6 @@
         </tr>
     </ItemTemplate>
     <EmptyDataTemplate>
-        <table></table>
-        <span>No songs</span>
+        <span class="empty">No songs<span>:(</span></span>
     </EmptyDataTemplate>
 </asp:ListView>

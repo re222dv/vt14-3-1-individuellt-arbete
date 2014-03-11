@@ -7,7 +7,8 @@ using System.Web;
 
 namespace IV.Model.DAL {
     public class ArtDAL {
-        public const int ALBUM_ART = 260;
+        public const int ALBUM_ART_BIG = 260;
+        public const int ALBUM_ART_SMALL = 150;
 
         public static readonly String PhysicalAlbumArtPath;
         public static readonly String PhysicalArtistArtPath;
@@ -43,7 +44,7 @@ namespace IV.Model.DAL {
             return image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid;
         }
 
-        private static void PrepareAlbumArt(int albumId, int size) {
+        public static void PrepareAlbumArt(int albumId, int size) {
             var path = Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, size));
 
             if (!File.Exists(path)) {
@@ -72,7 +73,8 @@ namespace IV.Model.DAL {
         /// </summary>
         public static void DeleteAlbumArt(int albumId) {
             DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}.jpg", albumId)));
-            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART)));
+            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_BIG)));
+            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_SMALL)));
         }
 
         /// <summary>
@@ -96,7 +98,8 @@ namespace IV.Model.DAL {
             image.Dispose();
             stream.Dispose();
 
-            PrepareAlbumArt(albumId, ALBUM_ART);
+            PrepareAlbumArt(albumId, ALBUM_ART_BIG);
+            PrepareAlbumArt(albumId, ALBUM_ART_SMALL);
         }
 
         /// <summary>
