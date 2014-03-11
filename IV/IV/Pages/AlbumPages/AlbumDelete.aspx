@@ -3,7 +3,7 @@
     <asp:FormView ID="AlbumFormView" runat="server" ItemType="IV.Model.AlbumArtist" DataKeyNames="AlbumID"
                   SelectMethod="AlbumFormView_GetItem">
         <ItemTemplate>
-            <p>Do you realy want to delete the album '<%#: Item.Name %>' by '<%#: Item.ArtistName %>'?<br />
+            <p>Do you realy want to delete the album '<%# Item.Name %>' by '<%# Item.ArtistName %>'?<br />
                 <strong>Warning! This will also delete all songs on this album.</strong>
             </p>
             <asp:LinkButton runat="server" OnClick="Delete">Yes</asp:LinkButton>

@@ -21,6 +21,10 @@
                 New Artist
             </asp:HyperLink>
         </nav>
+        <asp:Panel ID="SuccessPanel" runat="server">
+            <asp:Label ID="SuccessLabel" runat="server"></asp:Label>
+        </asp:Panel>
+        <asp:ValidationSummary runat="server" />
         <asp:ContentPlaceHolder ID="Content" runat="server" />
     </div>
     </form>

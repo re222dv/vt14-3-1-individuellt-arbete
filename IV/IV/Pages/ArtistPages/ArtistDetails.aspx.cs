@@ -9,26 +9,30 @@ using IV.Model;
 
 namespace IV.Pages {
     public partial class ArtistDetails : Page {
-        protected void Page_Load(object sender, EventArgs e) {
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public Artist ArtistFormView_GetItem([RouteData]int id) {
             try {
-                Art.PrepareArtistArt(id, 250, 250);
+                return Service.GetArtistById(id);
             } catch {
-                //TODO
+                ModelState.AddModelError(String.Empty, "An error occured when getting the artist from the database");
+                return null;
             }
-            return Service.GetArtistById(id);
         }
 
         public IEnumerable<Album> AlbumListView_GetData([RouteData]int id) {
-            return Service.GetAlbumsByArtistId(id);
+            try {
+                return Service.GetAlbumsByArtistId(id);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the albums from the database");
+                return null;
+            }
         }
 
         public void ArtistFormView_UpdateItem(int ArtistID) {
             Artist item = Service.GetArtistById(ArtistID);
             if (item == null) {
-                ModelState.AddModelError("", String.Format("Artist with id {0} was not found", ArtistID));
+                ModelState.AddModelError(String.Empty, String.Format("Artist with id {0} was not found", ArtistID));
                 return;
             }
 
@@ -39,18 +43,17 @@ namespace IV.Pages {
                     try {
                         var picUpload = ArtistFormView.FindControl("PicUpload") as FileUpload;
                         if (picUpload.HasFile) {
-                            Art.SaveArtistArt(picUpload.FileContent, item.ArtistID);
+                            Service.SaveArtistArt(picUpload.FileContent, item.ArtistID);
                         }
 
-                        Response.RedirectToRoute("ArtistDetails", new {
-                            id = item.ArtistID
-                        });
+                        this.SetTempData("SuccessMessage", "The artist was saved.");
+                        Response.RedirectToRoute("ArtistDetails", new {id = item.ArtistID});
                         Context.ApplicationInstance.CompleteRequest();
                     } catch {
-                        ModelState.AddModelError(String.Empty, "Error saving the artist picture");
+                        ModelState.AddModelError(String.Empty, "Error while saving the artist picture");
                     }
                 } catch {
-                    ModelState.AddModelError(String.Empty, "Error adding the artist to the database");
+                    ModelState.AddModelError(String.Empty, "Error while saving the artist in the database");
                 }
             }
         }

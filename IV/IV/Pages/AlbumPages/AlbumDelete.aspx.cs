@@ -8,24 +8,31 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages.AlbumPages {
-    public partial class AlbumDelete : System.Web.UI.Page {
+    public partial class AlbumDelete : Page {
         private int albumId;
 
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public AlbumArtist AlbumFormView_GetItem([RouteData]int id) {
-            albumId = id;
-            return Service.GetAlbumById(id);
+            try {
+                albumId = id;
+                return Service.GetAlbumById(id);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the album from the database");
+                return null;
+            }
         }
 
         protected void Delete(object sender, EventArgs e) {
-            Service.DeleteAlbum(albumId);
+            try {
+                Service.DeleteAlbum(albumId);
 
-            Page.SetTempData("SuccessMessage", "The album was removed.");
-            Response.RedirectToRoute("Albums");
-            Context.ApplicationInstance.CompleteRequest();
+                this.SetTempData("SuccessMessage", "The album was removed.");
+                Response.RedirectToRoute("Albums");
+                Context.ApplicationInstance.CompleteRequest();
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when deleating the album from the database");
+            }
         }
     }
 }

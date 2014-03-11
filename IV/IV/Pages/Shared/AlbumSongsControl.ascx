@@ -10,7 +10,7 @@
     <ItemTemplate>
         <tr>
             <td><%#: Item.Number %></td>
-            <td><%#: Item.Name %></td>
+            <td><%# Item.Name %></td>
             <td><%#: Item.LengthMinutes %></td>
         </tr>
     </ItemTemplate>

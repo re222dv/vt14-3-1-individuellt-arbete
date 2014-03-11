@@ -7,10 +7,8 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages.ArtistPages {
-    public partial class NewArtist : System.Web.UI.Page {
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+    public partial class NewArtist : Page {
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public void InsertArtist() {
             var item = new Artist();
@@ -21,15 +19,16 @@ namespace IV.Pages.ArtistPages {
 
                     try {
                         var picUpload = FormView.FindControl("PicUpload") as FileUpload;
-                        Art.SaveArtistArt(picUpload.FileContent, item.ArtistID);
+                        Service.SaveArtistArt(picUpload.FileContent, item.ArtistID);
 
+                        this.SetTempData("SuccessMessage", "The artist was created.");
                         Response.RedirectToRoute("ArtistDetails", new {id = item.ArtistID});
                         Context.ApplicationInstance.CompleteRequest();
                     } catch {
-                        ModelState.AddModelError(String.Empty, "Error saving the artist picture");
+                        ModelState.AddModelError(String.Empty, "Error while saving the artist picture");
                     }
                 } catch {
-                    ModelState.AddModelError(String.Empty, "Error adding the artist to the database");
+                    ModelState.AddModelError(String.Empty, "Error while adding the artist to the database");
                 }
             }
         }

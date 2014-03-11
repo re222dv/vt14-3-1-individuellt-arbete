@@ -16,6 +16,8 @@ namespace IV.App_Start {
             routes.MapPageRoute("ArtistDetails", "artists/{id}", "~/Pages/ArtistPages/ArtistDetails.aspx");
             routes.MapPageRoute("ArtistDelete", "artists/{id}/delete", "~/Pages/ArtistPages/ArtistDelete.aspx");
             routes.MapPageRoute("AlbumNew", "artists/{artistId}/newalbum", "~/Pages/AlbumPages/NewAlbum.aspx");
+
+            routes.MapPageRoute("Default", "", "~/Pages/ArtistPages/Artists.aspx");
         }
     }
 }

@@ -8,10 +8,8 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages.AlbumPages {
-    public partial class NewAlbum : System.Web.UI.Page {
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+    public partial class NewAlbum : Page {
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public void InsertAlbum([RouteData] int artistId) {
             var item = new Album();
@@ -24,17 +22,16 @@ namespace IV.Pages.AlbumPages {
 
                     try {
                         var picUpload = FormView.FindControl("PicUpload") as FileUpload;
-                        Art.SaveAlbumArt(picUpload.FileContent, item.AlbumID);
+                        Service.SaveAlbumArt(picUpload.FileContent, item.AlbumID);
 
-                        Response.RedirectToRoute("AlbumDetails", new {
-                            id = item.AlbumID
-                        });
+                        this.SetTempData("SuccessMessage", "The album was created.");
+                        Response.RedirectToRoute("AlbumDetails", new {id = item.AlbumID});
                         Context.ApplicationInstance.CompleteRequest();
                     } catch {
-                        ModelState.AddModelError(String.Empty, "Error saving the album picture");
+                        ModelState.AddModelError(String.Empty, "Error while saving the album picture");
                     }
                 } catch {
-                    ModelState.AddModelError(String.Empty, "Error adding the album to the database");
+                    ModelState.AddModelError(String.Empty, "Error while adding the album to the database");
                 }
             }
         }

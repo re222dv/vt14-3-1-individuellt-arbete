@@ -8,22 +8,15 @@ using IV.Model;
 
 namespace IV.Pages {
     public partial class Albums : Page {
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public IEnumerable<AlbumArtist> ListView_GetData() {
-            var albums = Service.GetAlbums();
-
-            foreach (var album in albums) {
-                try {
-                    Art.PrepareAlbumArt(album.AlbumID, 80);
-                } catch {
-                    //TODO
-                }
+            try {
+                return Service.GetAlbums();
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the albums from the database");
+                return null;
             }
-
-            return albums;
         }
     }
 }

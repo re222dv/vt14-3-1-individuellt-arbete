@@ -19,12 +19,15 @@ namespace IV.Pages.Shared {
             set;
         }
 
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public IEnumerable<Song> SongListView_GetData() {
-            return Service.GetSongsByAlbumId(int.Parse(AlbumID));
+            try {
+                return Service.GetSongsByAlbumId(int.Parse(AlbumID));
+            } catch {
+                Page.ModelState.AddModelError(String.Empty, "An error occured when getting the songs from the database");
+                return null;
+            }
         }
 
         public void SongListView_InsertItem() {
@@ -39,7 +42,7 @@ namespace IV.Pages.Shared {
                     Response.RedirectToRoute("AlbumDetails", new {id = item.AlbumID});
                     Context.ApplicationInstance.CompleteRequest();
                 } catch {
-                    //ModelState.AddModelError(String.Empty, "Error adding the album to the database");
+                    Page.ModelState.AddModelError(String.Empty, "Error while adding the album to the database");
                 }
             }
         }
@@ -48,14 +51,14 @@ namespace IV.Pages.Shared {
             try {
                 Service.DeleteSong(SongID);
             } catch {
-                //TODO
+                Page.ModelState.AddModelError(String.Empty, "An error occured when deleting the song in the database");
             }
         }
 
         public void SongListView_UpdateItem(int SongID) {
             Song item = Service.GetSongById(SongID);
             if (item == null) {
-                //ModelState.AddModelError("", String.Format("Album with id {0} was not found", AlbumId));
+                Page.ModelState.AddModelError("", String.Format("Song with id {0} was not found", SongID));
                 return;
             }
 
@@ -66,7 +69,7 @@ namespace IV.Pages.Shared {
                     Response.RedirectToRoute("AlbumDetails", new {id = item.AlbumID});
                     Context.ApplicationInstance.CompleteRequest();
                 } catch {
-                    //ModelState.AddModelError(String.Empty, "Error adding the album to the database");
+                    Page.ModelState.AddModelError(String.Empty, "Error while saving the Song to the database");
                 }
             }
         }

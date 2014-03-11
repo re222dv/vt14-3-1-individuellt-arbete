@@ -8,24 +8,31 @@ using System.Web.UI.WebControls;
 using IV.Model;
 
 namespace IV.Pages.ArtistPages {
-    public partial class ArtistDelete : System.Web.UI.Page {
+    public partial class ArtistDelete : Page {
         private int artistId;
 
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public Artist ArtistFormView_GetItem([RouteData]int id) {
-            artistId = id;
-            return Service.GetArtistById(id);
+            try {
+                artistId = id;
+                return Service.GetArtistById(id);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the artist from the database");
+                return null;
+            }
         }
 
         protected void Delete(object sender, EventArgs e) {
-            Service.DeleteArtist(artistId);
+            try {
+                Service.DeleteArtist(artistId);
 
-            Page.SetTempData("SuccessMessage", "The artist was removed.");
-            Response.RedirectToRoute("Artists");
-            Context.ApplicationInstance.CompleteRequest();
+                Page.SetTempData("SuccessMessage", "The artist was removed.");
+                Response.RedirectToRoute("Artists");
+                Context.ApplicationInstance.CompleteRequest();
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when deleting the artist in the database");
+            }
         }
     }
 }

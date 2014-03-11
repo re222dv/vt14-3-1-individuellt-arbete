@@ -19,7 +19,7 @@
                 <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>" Enabled="false"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%#: Item.Name %>" Enabled="false"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>" Enabled="false"></asp:TextBox>
             </td>
             <td>
                 <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>" Enabled="false"></asp:TextBox>
@@ -38,7 +38,7 @@
                 <asp:TextBox ID="NumberBox" runat="server" Text="<%#: BindItem.Number %>"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%#: BindItem.Name %>"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# BindItem.Name %>"></asp:TextBox>
             </td>
             <td>
                 <asp:TextBox ID="LengthBox" runat="server" Text="<%#: BindItem.LengthMinutes %>"></asp:TextBox>
@@ -54,7 +54,7 @@
                 <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>"></asp:TextBox>
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%#: Item.Name %>"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>"></asp:TextBox>
             </td>
             <td>
                 <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>"></asp:TextBox>

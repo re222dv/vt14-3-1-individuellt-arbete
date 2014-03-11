@@ -14,12 +14,15 @@ namespace IV.Pages.Shared {
             set;
         }
 
-        protected void Page_Load(object sender, EventArgs e) {
-
-        }
+        protected void Page_Load(object sender, EventArgs e) {}
 
         public IEnumerable<Song> SongListView_GetData() {
-            return Service.GetSongsByAlbumId(int.Parse(AlbumID));
+            try {
+                return Service.GetSongsByAlbumId(int.Parse(AlbumID));
+            } catch {
+                Page.ModelState.AddModelError(String.Empty, "An error occured when getting the songs from the database");
+                return null;
+            }
         }
     }
 }

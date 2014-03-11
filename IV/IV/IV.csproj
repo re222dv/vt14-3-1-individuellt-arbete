@@ -57,9 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\Albums\1.jpg" />
-    <Content Include="Content\Images\Albums\2.jpg" />
-    <Content Include="Content\Images\Artists\1.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Pages\AlbumPages\AlbumDelete.aspx" />
     <Content Include="Pages\AlbumPages\NewAlbum.aspx" />
@@ -75,7 +72,9 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Infrastructure\PageExtensions.cs" />
@@ -91,7 +90,7 @@
     <Compile Include="Model\DAL\AlbumDAL.cs" />
     <Compile Include="Model\DAL\ArtistDAL.cs" />
     <Compile Include="Model\DAL\SongDAL.cs" />
-    <Compile Include="Model\Art.cs" />
+    <Compile Include="Model\DAL\ArtDAL.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="App_Infrastructure\Validatable.cs" />
@@ -183,7 +182,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\Images\Albums\" />
+    <Folder Include="Content\Images\Artists\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

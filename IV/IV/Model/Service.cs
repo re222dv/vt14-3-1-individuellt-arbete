@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Web;
 using IV.Model.DAL;
@@ -14,6 +15,7 @@ namespace IV.Model {
         /// </summary>
         public static void DeleteAlbum(int albumID) {
             AlbumDAL.DeleteAlbum(albumID);
+            DeleteAlbumArt(albumID);
         }
 
         /// <summary>
@@ -59,7 +61,12 @@ namespace IV.Model {
         /// Delete an artist
         /// </summary>
         public static void DeleteArtist(int artistID) {
+            foreach (var album in GetAlbumsByArtistId(artistID)) {
+                DeleteAlbumArt(album.AlbumID);
+            }
+
             ArtistDAL.DeleteArtist(artistID);
+            DeleteArtistArt(artistID);
         }
 
         /// <summary>
@@ -129,6 +136,36 @@ namespace IV.Model {
             } else {
                 SongDAL.UpdateSong(song);
             }
+        }
+        #endregion
+
+        #region ART CD
+        /// <summary>
+        /// Deletes all images associated with the album
+        /// </summary>
+        public static void DeleteAlbumArt(int albumId) {
+            ArtDAL.DeleteAlbumArt(albumId);
+        }
+
+        /// <summary>
+        /// Deletes all images associated with the artist
+        /// </summary>
+        public static void DeleteArtistArt(int artistId) {
+            ArtDAL.DeleteArtistArt(artistId);
+        }
+
+        /// <summary>
+        /// Save the album art and create all custom sizes
+        /// </summary>
+        public static void SaveAlbumArt(Stream stream, int albumId) {
+            ArtDAL.SaveAlbumArt(stream, albumId);
+        }
+
+        /// <summary>
+        /// Save the artist art and create all custom sizes
+        /// </summary>
+        public static void SaveArtistArt(Stream stream, int artistId) {
+            ArtDAL.SaveArtistArt(stream, artistId);
         }
         #endregion
     }

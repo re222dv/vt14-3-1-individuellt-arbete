@@ -6,18 +6,18 @@
     <asp:FormView ID="ArtistFormView" runat="server" ItemType="IV.Model.Artist" DataKeyNames="ArtistID"
         SelectMethod="ArtistFormView_GetItem" UpdateMethod="ArtistFormView_UpdateItem">
         <ItemTemplate>
-            <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Artists/" + Item.ArtistID + "_250x250.jpg" %>' />
-            <h1><%#: Item.Name %></h1>
+            <div id="image" style='width: 960px; height: 400px; background-image: url(<%#: "../Content/Images/Artists/" + Item.ArtistID + ".jpg" %>); background-size: cover;'></div>
+            <h1><%# Item.Name %></h1>
             <%#: Item.Formed.ToString("yyyy") %>
 
-            <p><%#: Item.Description %></p>
+            <p><%# Item.Description %></p>
 
             <asp:ListView ID="AlbumListView" runat="server" ItemType="IV.Model.Album" DataKeyNames="AlbumID"
                 SelectMethod="AlbumListView_GetData">
                 <ItemTemplate>
                     <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_80.jpg" %>' />
                     <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
-                        <h2><%#: Item.Name %></h2>
+                        <h2><%# Item.Name %></h2>
                     </asp:HyperLink>
                     <span><%#: Item.Released.Year %></span>
                     <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
@@ -31,7 +31,7 @@
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
             <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Artists/" + Item.ArtistID + "_250x250.jpg" %>' />
 
-            Name <asp:TextBox ID="TextBox1" runat="server" Text='<%#: BindItem.Name %>'></asp:TextBox>
+            Name <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.Name %>'></asp:TextBox>
             Formed <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Text='<%# Bind("Formed", "{0:yyyy-MM-dd}")%>'></asp:TextBox>
             Description <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" Text='<%# BindItem.Description %>'></asp:TextBox>
             Picture <asp:FileUpload ID="PicUpload" runat="server" />
@@ -41,7 +41,7 @@
                 SelectMethod="AlbumListView_GetData">
                 <ItemTemplate>
                     <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
-                        <span><%#: Item.Name %></span>
+                        <span><%# Item.Name %></span>
                     </asp:HyperLink>
                 </ItemTemplate>
             </asp:ListView>
