@@ -8,7 +8,7 @@
         SelectMethod="AlbumFormView_GetItem" UpdateMethod="AlbumFormView_UpdateItem" RenderOuterTable="False">
         <ItemTemplate>
             <div id="album">
-                <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
+                <asp:Image runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
                 <h1><%# Item.Name %></h1>
                 <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
                     <h2><%# Item.ArtistName %></h2>
@@ -24,13 +24,27 @@
             </div>
         </ItemTemplate>
         <EditItemTemplate>
-            Name <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.Name %>'></asp:TextBox>
-            Released <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Text='<%# Bind("Released", "{0:yyyy-MM-dd}")%>'></asp:TextBox>
-            Picture <asp:FileUpload ID="PicUpload" runat="server" />
-            <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Update">Save</asp:LinkButton>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>Cancel</asp:HyperLink>
+            <div id="albumEdit">
+                <asp:Image runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_150.jpg" %>' />
+                <div id="input">
+                    <div>
+                        <span>Name</span><asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>'></asp:TextBox>
+                    </div>
+                    <div>
+                        <span>Released</span><asp:TextBox ID="Released" runat="server" TextMode="Date" Text='<%# Bind("Released", "{0:yyyy-MM-dd}")%>'></asp:TextBox>
+                    </div>
+                    <div>
+                        <span>Picture</span><asp:FileUpload ID="PicUpload" runat="server" />
+                    </div>
+                </div>
 
-            <uc:EditAlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" ArtistID="<%#: Item.ArtistID %>" />
+                <div id="albumControls">
+                    <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Update">Save</asp:LinkButton>
+                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>Cancel</asp:HyperLink>
+                </div>
+
+                <uc:EditAlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" ArtistID="<%#: Item.ArtistID %>" />
+            </div>
         </EditItemTemplate>
     </asp:FormView>
 </asp:Content>

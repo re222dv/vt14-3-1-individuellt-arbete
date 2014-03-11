@@ -9,6 +9,8 @@
             <td>Number</td>
             <td>Name</td>
             <td>Length</td>
+            <td></td>
+            <td></td>
         </tr>
             <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
         </table>
@@ -46,6 +48,7 @@
             <td>
                 <asp:LinkButton ID="LinkButton3" runat="server" CommandName="Insert">Add</asp:LinkButton>
             </td>
+            <td></td>
         </tr>
     </InsertItemTemplate>
     <EditItemTemplate>
