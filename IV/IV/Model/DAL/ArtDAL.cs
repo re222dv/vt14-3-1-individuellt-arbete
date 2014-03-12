@@ -7,7 +7,7 @@ using System.Web;
 
 namespace IV.Model.DAL {
     public class ArtDAL {
-        public const int ALBUM_ART_BIG = 260;
+        public const int ALBUM_ART_BIG = 270;
         public const int ALBUM_ART_SMALL = 150;
 
         public static readonly String PhysicalAlbumArtPath;

@@ -4,46 +4,46 @@
     SelectMethod="SongListView_GetData" InsertItemPosition="LastItem" InsertMethod="SongListView_InsertItem"
     DeleteMethod="SongListView_DeleteItem" UpdateMethod="SongListView_UpdateItem">
     <LayoutTemplate>
-        <table>
-        <tr>
-            <td>Number</td>
-            <td>Name</td>
-            <td>Length</td>
-            <td></td>
-            <td></td>
-        </tr>
+        <table id="songs">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Length</th>
+                <th></th>
+                <th></th>
+            </tr>
             <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
         </table>
     </LayoutTemplate>
     <ItemTemplate>
         <tr>
             <td>
-                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>" Enabled="false"></asp:TextBox>
+                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>" Enabled="false" MaxLength="2" Columns="2" />
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>" Enabled="false"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>" Enabled="false" MaxLength="30" Columns="30" />
             </td>
             <td>
-                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>" Enabled="false"></asp:TextBox>
+                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>" Enabled="false" MaxLength="4" Columns="4" />
             </td>
             <td>
                 <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Edit">Edit</asp:LinkButton>
             </td>
             <td>
-                <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Delete">Delete</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Delete" OnClientClick="return confirm('Do you realy want to remove this song?');">Delete</asp:LinkButton>
             </td>
         </tr>
     </ItemTemplate>
     <InsertItemTemplate>
         <tr>
             <td>
-                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: BindItem.Number %>"></asp:TextBox>
+                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: BindItem.Number %>" MaxLength="2" Columns="2" />
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%# BindItem.Name %>"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# BindItem.Name %>" MaxLength="30" Columns="30" />
             </td>
             <td>
-                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: BindItem.LengthMinutes %>"></asp:TextBox>
+                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: BindItem.LengthMinutes %>" MaxLength="4" Columns="4" />
             </td>
             <td>
                 <asp:LinkButton ID="LinkButton3" runat="server" CommandName="Insert">Add</asp:LinkButton>
@@ -54,13 +54,13 @@
     <EditItemTemplate>
         <tr>
             <td>
-                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>"></asp:TextBox>
+                <asp:TextBox ID="NumberBox" runat="server" Text="<%#: Item.Number %>" MaxLength="2" Columns="2" />
             </td>
             <td>
-                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>"></asp:TextBox>
+                <asp:TextBox ID="NameBox" runat="server" Text="<%# Item.Name %>" MaxLength="30" Columns="30" />
             </td>
             <td>
-                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>"></asp:TextBox>
+                <asp:TextBox ID="LengthBox" runat="server" Text="<%#: Item.LengthMinutes %>" MaxLength="4" Columns="4" />
             </td>
             <td>
                 <asp:LinkButton ID="LinkButton3" runat="server" CommandName="Update">Save</asp:LinkButton>

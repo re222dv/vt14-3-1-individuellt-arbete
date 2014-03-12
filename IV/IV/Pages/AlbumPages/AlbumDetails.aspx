@@ -10,7 +10,7 @@
             <div id="album">
                 <asp:Image runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
                 <h1><%# Item.Name %></h1>
-                <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
+                <asp:HyperLink CssClass="hover" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
                     <h2><%# Item.ArtistName %></h2>
                 </asp:HyperLink>
                 <span class="year"><%#: Item.Released.Year %></span>
@@ -28,10 +28,10 @@
                 <asp:Image runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_150.jpg" %>' />
                 <div id="input">
                     <div>
-                        <span>Name</span><asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>'></asp:TextBox>
+                        <span>Name</span><asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' MaxLength="35" Columns="35" />
                     </div>
                     <div>
-                        <span>Released</span><asp:TextBox ID="Released" runat="server" TextMode="Date" Text='<%# Bind("Released", "{0:yyyy-MM-dd}")%>'></asp:TextBox>
+                        <span>Released</span><asp:TextBox ID="Released" runat="server" TextMode="Date" Text='<%# Bind("Released", "{0:yyyy-MM-dd}")%>' MaxLength="10" Columns="10" />
                     </div>
                     <div>
                         <span>Picture</span><asp:FileUpload ID="PicUpload" runat="server" />

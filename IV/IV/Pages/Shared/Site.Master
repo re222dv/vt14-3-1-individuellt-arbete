@@ -26,7 +26,7 @@
         </asp:Panel>
 
         <div id="container">
-            <asp:ValidationSummary runat="server" />
+            <asp:ValidationSummary runat="server" CssClass="error" />
             <asp:ContentPlaceHolder ID="Content" runat="server" />
         </div>
 
