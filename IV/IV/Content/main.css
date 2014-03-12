@@ -366,12 +366,16 @@ nav a:last-child {
         -webkit-transform: rotate(90deg);
     }
 
-    30% {
+    24% {
         -webkit-transform: rotate(70deg);
     }
 
-    70% {
+    56% {
         -webkit-transform: rotate(110deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(90deg);
     }
 
     to {
@@ -384,16 +388,16 @@ nav a:last-child {
         transform: rotate(90deg);
     }
 
-    90% {
-        transform: rotate(90deg);
-    }
-
-    93% {
+    24% {
         transform: rotate(70deg);
     }
 
-    97% {
+    56% {
         transform: rotate(110deg);
+    }
+
+    80% {
+        transform: rotate(90deg);
     }
 
     to {
