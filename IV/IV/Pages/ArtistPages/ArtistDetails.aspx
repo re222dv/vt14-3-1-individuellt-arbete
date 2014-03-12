@@ -26,31 +26,35 @@
                         <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
                     </ItemTemplate>
                 </asp:ListView>
+            </div>
             
-                <div id="controls">
-                    <asp:LinkButton runat="server" CommandName="Edit">Edit</asp:LinkButton>
-                    <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDelete", new {id = Item.ArtistID}) %>'>Delete</asp:HyperLink>
-                </div>
+            <div id="controls">
+                <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Edit">Edit</asp:LinkButton>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDelete", new {id = Item.ArtistID}) %>'>Delete</asp:HyperLink>
             </div>
         </ItemTemplate>
         <EditItemTemplate>
             <div id="artistEdit">
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                 <asp:Image ID="Image1" runat="server" ImageUrl='<%#: "~/Content/Images/Artists/" + Item.ArtistID + "_250x250.jpg" %>' />
 
                 <div>
-                    <span>Name</span> <asp:TextBox ID="TextBox1" runat="server" Text='<%# BindItem.Name %>' MaxLength="20" Columns="20"></asp:TextBox>
+                    <span>Name</span> <asp:TextBox ID="Name" runat="server" Text='<%# BindItem.Name %>' MaxLength="20" Columns="20"></asp:TextBox>
+                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Name is requiered" ControlToValidate="Name" Display="None" />
                 </div>
                 <div>
-                    <span>Formed</span> <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Text='<%# Bind("Formed", "{0:yyyy-MM-dd}")%>' MaxLength="10" Columns="10"></asp:TextBox>
+                    <span>Formed</span> <asp:TextBox ID="Formed" runat="server" TextMode="Date" Text='<%# Bind("Formed", "{0:yyyy-MM-dd}")%>' MaxLength="10" Columns="10" />
+                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Formed is requiered" ControlToValidate="Formed" Display="None" />
+                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Formed is not a valid date" ControlToValidate="Formed" Display="None" ValidationExpression="^\d{4}-((0[1-9])|(1[0-2]))-(([0-2]\d)|(3[01]))$" />
                 </div>
                 <div>
                     <span>Picture</span> <asp:FileUpload ID="PicUpload" runat="server" />
+                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Picture must be a jpeg" ControlToValidate="PicUpload" Display="None" ValidationExpression="^.+\.[jJ][pP][eE]?[gG]$" />
                 </div>
                 <div>
                     <span>Description</span>
                 </div>
-                <asp:TextBox ID="TextBox3" runat="server" TextMode="MultiLine" Text='<%# BindItem.Description %>'></asp:TextBox>
+                <asp:TextBox ID="Description" runat="server" TextMode="MultiLine" Text='<%# BindItem.Description %>'></asp:TextBox>
+                <asp:RequiredFieldValidator runat="server" ErrorMessage="Description is requiered" ControlToValidate="Description" Display="None" />
             
                 <ul id="albumList">
                     <li>

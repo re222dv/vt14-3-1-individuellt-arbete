@@ -5,13 +5,18 @@
         <InsertItemTemplate>
             <div id="artistEdit">
                 <div>
-                    <span>Name</span> <asp:TextBox ID="TextBox1" runat="server" Text='<%#: BindItem.Name %>' MaxLength="35" Columns="35"/>
+                    <span>Name</span> <asp:TextBox ID="Name" runat="server" Text='<%#: BindItem.Name %>' MaxLength="35" Columns="35"/>
+                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Name is requiered" ControlToValidate="Name" Display="None" />
                 </div>
                 <div>
-                    <span>Released</span> <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" Text='<%#: BindItem.Released %>' MaxLength="10" Columns="10" />
+                    <span>Released</span> <asp:TextBox ID="Released" runat="server" TextMode="Date" Text='<%#: BindItem.Released %>' MaxLength="10" Columns="10" />
+                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Released is requiered" ControlToValidate="Released" Display="None" />
+                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Released is not a valid date" ControlToValidate="Released" Display="None" ValidationExpression="^\d{4}-((0[1-9])|(1[0-2]))-(([0-2]\d)|(3[01]))$" />
                 </div>
                 <div>
                     <span>Picture</span> <asp:FileUpload ID="PicUpload" runat="server" />
+                    <asp:RequiredFieldValidator runat="server" ErrorMessage="Picture is requiered" ControlToValidate="PicUpload" Display="None" />
+                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Picture must be a jpeg" ControlToValidate="PicUpload" Display="None" ValidationExpression="^.+\.[jJ][pP][eE]?[gG]$" />
                 </div>
             </div>
             

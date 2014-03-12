@@ -60,7 +60,6 @@ nav a:last-child {
     padding: 20px;
 
     width: 920px;
-    min-height: 100%;
 
     background-color: #ddd9c5;
     border: 2px solid #111;
@@ -119,9 +118,15 @@ nav a:last-child {
 }
 
 #album .empty {
+    display: block;
     position: relative;
     top: -100px;
-    left: 20px;
+    left: 300px;
+    margin-bottom: -100px;
+}
+
+#album footer {
+    height: 75px;
 }
 
 #albumEdit #input {
@@ -202,6 +207,10 @@ nav a:last-child {
     background-color: darkgray;
     border-radius: 10px;
     box-shadow: 0 0 10px 5px #333;
+}
+
+#artist p:last-child {
+    margin-bottom: 35px;
 }
 
 #artist h1 {
@@ -352,16 +361,62 @@ nav a:last-child {
     }
 }
 
+@-webkit-keyframes wobble {
+    from {
+        -webkit-transform: rotate(90deg);
+    }
+
+    30% {
+        -webkit-transform: rotate(70deg);
+    }
+
+    70% {
+        -webkit-transform: rotate(110deg);
+    }
+
+    to {
+        -webkit-transform: rotate(90deg);
+    }
+}
+
+@keyframes wobble {
+    from {
+        transform: rotate(90deg);
+    }
+
+    90% {
+        transform: rotate(90deg);
+    }
+
+    93% {
+        transform: rotate(70deg);
+    }
+
+    97% {
+        transform: rotate(110deg);
+    }
+
+    to {
+        transform: rotate(90deg);
+    }
+}
+
 .empty span {
     display: inline-block;
-    margin-bottom: -20px;
-    padding-bottom: 12px;
+    padding: 5px;
+
+    height: 18px;
     width: 18px;
+
+    line-height: 18px;
+    text-align: center;
     
-    -webkit-animation: rotate 1s ease-in-out;
-    animation: rotate 1s ease-in-out;
+    -webkit-animation: rotate 1s ease-in-out, wobble 10s 1s infinite ease-in-out;
+    animation: rotate 1s ease-in-out, wobble 10s 1s infinite ease-in-out;
+
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
+    transform-origin: 50% 50%;
 }
 
 #artist table {
@@ -555,4 +610,14 @@ th {
 
 #controls a:hover, #albumControls a:hover, a.hover:hover {
     color: #7D7967 !important;
+}
+
+strong {
+    display: block;
+    margin-left: -4px;
+    margin-bottom: 40px;
+    padding: 2px 10px;
+
+    background-color: yellow;
+    border-radius: 5px;
 }
