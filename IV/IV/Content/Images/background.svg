@@ -7,10 +7,10 @@
         <pattern id="dots"
                  width="80" height="40"
                  patternUnits="userSpaceOnUse">
-                 <circle cx="5" cy="5" r="3" fill="#333"/>
-                 <circle cx="45" cy="5" r="3" fill="#333"/>
-                 <circle cx="25" cy="25" r="3" fill="#333"/>
-                 <circle cx="65" cy="25" r="3" fill="#333"/>
+                 <circle cx="5" cy="5" r="3" fill="#222"/>
+                 <circle cx="45" cy="5" r="3" fill="#222"/>
+                 <circle cx="25" cy="25" r="3" fill="#222"/>
+                 <circle cx="65" cy="25" r="3" fill="#222"/>
         </pattern>
     </defs>
 

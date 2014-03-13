@@ -7,8 +7,8 @@
 
     overflow: auto;
 
-    background-color: white;
-    background-image: radial-gradient(circle at center center, rgba(0, 0, 0, 0.7) 0%, #111 100%), url(Images/background.svg);
+    background-color: #111;
+    background-image: radial-gradient(circle at center 45%, rgba(200, 200, 200, 0.8) 0%, rgba(16, 16, 16, 0) 80%, rgba(16, 16, 16, 0.5) 100%), url(Images/background.svg);
 
     font-family: Arial, sans-serif;
 }
