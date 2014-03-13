@@ -11,7 +11,7 @@ namespace IV.Pages.AlbumPages {
     public partial class NewAlbum : Page {
         protected void Page_Load(object sender, EventArgs e) {}
 
-        public void InsertAlbum([RouteData] int artistId) {
+        public void InsertAlbum([RouteData] int? artistId) {
             var item = new Album();
 
             item.ArtistID = artistId;

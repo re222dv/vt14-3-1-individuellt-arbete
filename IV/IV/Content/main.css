@@ -1,7 +1,14 @@
 ﻿html, body {
     margin: 0;
     padding: 0;
-    background-color: #333;
+    
+    width: 100%;
+    height: 100%;
+
+    overflow: auto;
+
+    background-color: white;
+    background-image: radial-gradient(circle at center center, rgba(0, 0, 0, 0.7) 0%, #111 100%), url(Images/background.svg);
 
     font-family: Arial, sans-serif;
 }
@@ -38,7 +45,7 @@ nav a:hover {
     background: linear-gradient(to bottom, #f17432 0%,#feccb1 50%,#feccb1 51%,#f17432 100%);
 }
 
-nav a:last-child {
+nav a:nth-last-child(2), nav a:last-child {
     float: right;
     border-left: 1px solid #a63f07;
     border-right: none;
@@ -52,6 +59,20 @@ nav a:last-child {
     background-color: #78D078;
     border-radius: 10px;
     box-shadow: 0 0 10px 3px #78D078;
+}
+
+.error ul {
+    margin: 25px auto 25px auto;
+    padding: 10px 20px;
+    width: 870px;
+
+    color: whitesmoke;
+    background-color: rgb(120, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 3px darkred;
+
+    list-style: none;
+    font-weight: bold;
 }
 
 #container {
@@ -78,7 +99,7 @@ nav a:last-child {
     font-size: 2.4rem;
 }
 
-#album a {
+#album > a {
     position: absolute;
     top: 85px;
     left: 310px;
@@ -105,16 +126,23 @@ nav a:last-child {
     text-decoration: none;
 }
 
+#album h1 + .year {
+    position: absolute;
+    top: 85px;
+}
+
 #album table {
     position: relative;
     top: -120px;
     left: 290px;
     margin-bottom: -100px;
 
-    clear: left;
-
     width: 600px;
     border-collapse: collapse;
+}
+
+#album h1 + .year + table {
+    top: -170px;
 }
 
 #album .empty {
@@ -123,6 +151,10 @@ nav a:last-child {
     top: -100px;
     left: 300px;
     margin-bottom: -100px;
+}
+
+#album h1 + .year + .empty {
+    top: -150px;
 }
 
 #album footer {
@@ -201,19 +233,7 @@ nav a:last-child {
     border-bottom: 2px solid #111;
 }
 
-#artist p {
-    padding: 15px;
-
-    background-color: darkgray;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 5px #333;
-}
-
-#artist p:last-child {
-    margin-bottom: 35px;
-}
-
-#artist h1 {
+#artist h1:first-of-type {
     position: absolute;
     top: 310px;
     left: 10px;
@@ -226,6 +246,22 @@ nav a:last-child {
     box-shadow: 0 0 5px #000;
     font-size: 2.3rem;
     text-shadow: 0 0 5px #000;
+}
+
+#artist p {
+    padding: 15px;
+
+    background-color: darkgray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 5px #333;
+}
+
+#artist p:last-child {
+    margin-bottom: 35px;
+}
+
+#artist h1:not(:first-of-type) {
+    color: #333;
 }
 
 #artistEdit div {
@@ -415,8 +451,8 @@ nav a:last-child {
     line-height: 18px;
     text-align: center;
     
-    -webkit-animation: rotate 1s ease-in-out, wobble 10s 1s infinite ease-in-out;
-    animation: rotate 1s ease-in-out, wobble 10s 1s infinite ease-in-out;
+    -webkit-animation: rotate 1s ease-in-out, wobble 10s 2s infinite ease-in-out;
+    animation: rotate 1s ease-in-out, wobble 10s 2s infinite ease-in-out;
 
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
@@ -610,6 +646,24 @@ nav a:last-child {
 
 th {
     color: #333;
+}
+
+.songs a {
+    color: #333;
+    text-decoration: none;
+}
+
+#container .songError ul {
+    margin: 25px auto 25px auto;
+    padding: 10px 20px;
+    width: 870px;
+
+    color: whitesmoke;
+    background-color: darkred;
+    border-radius: 10px;
+
+    list-style: none;
+    font-weight: bold;
 }
 
 #controls a:hover, #albumControls a:hover, a.hover:hover {

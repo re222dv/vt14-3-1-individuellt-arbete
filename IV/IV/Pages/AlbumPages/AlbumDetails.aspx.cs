@@ -10,11 +10,17 @@ using IV.Model;
 namespace IV.Pages {
     public partial class AlbumDetails : Page {
 
+        private int? artistId;
+
         protected void Page_Load(object sender, EventArgs e) {}
 
         public AlbumArtist AlbumFormView_GetItem([RouteData]int id) {
             try {
-                return Service.GetAlbumById(id);
+                var album = Service.GetAlbumById(id);
+
+                artistId = album.ArtistID;
+
+                return album;
             } catch {
                 ModelState.AddModelError(String.Empty, "An error occured when getting the album from the database");
                 return null;
@@ -22,7 +28,13 @@ namespace IV.Pages {
         }
 
         public void AlbumFormView_UpdateItem(int AlbumId) {
-            AlbumArtist item = Service.GetAlbumById(AlbumId);
+            AlbumArtist item;
+            try {
+                item = Service.GetAlbumById(AlbumId);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the album from the database");
+                return;
+            }
             if (item == null) {
                 ModelState.AddModelError(String.Empty, String.Format("Album with id {0} was not found", AlbumId));
                 return;
@@ -47,6 +59,13 @@ namespace IV.Pages {
                 } catch {
                     ModelState.AddModelError(String.Empty, "Error while saving the album to the database");
                 }
+            }
+        }
+
+        protected void AlbumFormView_DataBound(object sender, EventArgs e) {
+            if (artistId == null) {
+                var artistName = AlbumFormView.FindControl("ArtistName");
+                artistName.Visible = false;
             }
         }
     }

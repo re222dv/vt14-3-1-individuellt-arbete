@@ -3,19 +3,22 @@
 <%@ Register Src="~/Pages/Shared/AlbumSongsControl.ascx" TagPrefix="uc" TagName="AlbumSongsControl" %>
 <%@ Register Src="~/Pages/Shared/EditAlbumSongsControl.ascx" TagPrefix="uc" TagName="EditAlbumSongsControl" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <asp:FormView ID="AlbumFormView" runat="server" ItemType="IV.Model.AlbumArtist" DataKeyNames="AlbumID"
-        SelectMethod="AlbumFormView_GetItem" UpdateMethod="AlbumFormView_UpdateItem" RenderOuterTable="False">
+        SelectMethod="AlbumFormView_GetItem" UpdateMethod="AlbumFormView_UpdateItem" RenderOuterTable="False" OnDataBound="AlbumFormView_DataBound">
         <ItemTemplate>
             <div id="album">
                 <asp:Image runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_270.jpg" %>' />
                 <h1><%# Item.Name %></h1>
-                <asp:HyperLink CssClass="hover" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
-                    <h2><%# Item.ArtistName %></h2>
-                </asp:HyperLink>
+                <asp:PlaceHolder ID="ArtistName" runat="server">
+                    <asp:HyperLink ID="HyperLink2" CssClass="hover" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
+                        <h2><%# Item.ArtistName %></h2>
+                    </asp:HyperLink>
+                </asp:PlaceHolder>
                 <span class="year"><%#: Item.Released.Year %></span>
             
-                <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
+                <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" ArtistID="<%#: Item.ArtistID %>" />
                 <footer></footer>
             </div>
             
@@ -34,8 +37,8 @@
                     </div>
                     <div>
                         <span>Released</span><asp:TextBox ID="Released" runat="server" TextMode="Date" Text='<%# Bind("Released", "{0:yyyy-MM-dd}")%>' MaxLength="10" Columns="10" />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Released is requiered" ControlToValidate="Released" Display="None" />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Released is not a valid date" ControlToValidate="Released" Display="None" ValidationExpression="^\d{4}-((0[1-9])|(1[0-2]))-(([0-2]\d)|(3[01]))$" />
+                        <asp:RequiredFieldValidator runat="server" ErrorMessage="Released is requiered" ControlToValidate="Released" Display="None" />
+                        <asp:RegularExpressionValidator runat="server" ErrorMessage="Released is not a valid date" ControlToValidate="Released" Display="None" ValidationExpression="^\d{4}-((0[1-9])|(1[0-2]))-(([0-2]\d)|(3[01]))$" />
                     </div>
                     <div>
                         <span>Picture</span><asp:FileUpload ID="PicUpload" runat="server" />

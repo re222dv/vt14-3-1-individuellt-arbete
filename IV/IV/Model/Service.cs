@@ -38,6 +38,13 @@ namespace IV.Model {
         public static IEnumerable<Album> GetAlbumsByArtistId(int artistID) {
             return AlbumDAL.GetAlbumsByArtistId(artistID);
         }
+
+        /// <summary>
+        /// Get albums an artist appears on
+        /// </summary>
+        public static IEnumerable<Album> GetAlbumsArtistAppearsOn(int artistID) {
+            return AlbumDAL.GetAlbumsArtistAppearsOn(artistID);
+        }
         
         /// <summary>
         /// Save the album
@@ -111,14 +118,14 @@ namespace IV.Model {
         /// <summary>
         /// Get a song
         /// </summary>
-        public static Song GetSongById(int songID) {
+        public static SongArtist GetSongById(int songID) {
             return SongDAL.GetSongById(songID);
         }
 
         /// <summary>
         /// Get an albums songs
         /// </summary>
-        public static IEnumerable<Song> GetSongsByAlbumId(int albumID) {
+        public static IEnumerable<SongArtist> GetSongsByAlbumId(int albumID) {
             return SongDAL.GetSongsByAlbumId(albumID);
         }
 

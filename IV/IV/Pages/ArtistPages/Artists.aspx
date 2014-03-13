@@ -11,7 +11,7 @@
         <ItemTemplate>
             <li>
                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%#: GetRouteUrl("ArtistDetails", new {id = Item.ArtistID}) %>'>
-                    <div class="image" style='background-image: url(<%#: "../Content/Images/Artists/" + Item.ArtistID + ".jpg" %>)'></div>
+                    <div class="image" style='background-image: url(<%#: "../Content/Images/Artists/" + Item.ArtistID + "_240x100.jpg" %>)'></div>
                     <span><%# Item.Name %></span>
                 </asp:HyperLink>
             </li>

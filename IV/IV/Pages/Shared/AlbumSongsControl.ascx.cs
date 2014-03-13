@@ -14,14 +14,31 @@ namespace IV.Pages.Shared {
             set;
         }
 
-        protected void Page_Load(object sender, EventArgs e) {}
+        public String ArtistID {
+            get;
+            set;
+        }
 
-        public IEnumerable<Song> SongListView_GetData() {
+        protected void Page_Load(object sender, EventArgs e) {
+            if (ArtistID == null) {
+                //var artistHeader = SongListView.FindControl("ArtistHeader");
+                //artistHeader.Visible = true;
+            }
+        }
+
+        public IEnumerable<SongArtist> SongListView_GetData() {
             try {
                 return Service.GetSongsByAlbumId(int.Parse(AlbumID));
             } catch {
                 Page.ModelState.AddModelError(String.Empty, "An error occured when getting the songs from the database");
                 return null;
+            }
+        }
+
+        protected void SongListView_ItemDataBound(object sender, ListViewItemEventArgs e) {
+            if (ArtistID == null) {
+                var artistData = e.Item.FindControl("ArtistData");
+                artistData.Visible = true;
             }
         }
     }

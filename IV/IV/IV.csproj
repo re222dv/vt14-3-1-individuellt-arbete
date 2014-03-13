@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Infrastructure\PageExtensions.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -96,6 +95,7 @@
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="App_Infrastructure\Validatable.cs" />
+    <Compile Include="Model\SongArtist.cs" />
     <Compile Include="Pages\AlbumPages\AlbumDelete.aspx.cs">
       <DependentUpon>AlbumDelete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

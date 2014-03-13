@@ -23,7 +23,25 @@
                             </asp:HyperLink>
                             <span><%#: Item.Released.Year %></span>
                         </div>
-                        <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" />
+                        <uc:AlbumSongsControl runat="server" AlbumID="<%#: Item.AlbumID %>" ArtistID="<%#: Item.ArtistID %>" />
+                    </ItemTemplate>
+                </asp:ListView>
+
+                <asp:ListView ID="AppearsAlbumListView" runat="server" ItemType="IV.Model.Album" DataKeyNames="AlbumID"
+                    SelectMethod="AppearsAlbumListView_GetData">
+                    <LayoutTemplate>
+                        <h1>Appears On</h1>
+                        <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <div class="album">
+                            <asp:Image ID="Image3" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_150.jpg" %>' />
+                            <asp:HyperLink ID="HyperLink3" runat="server" CssClass="hover" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
+                                <h2><%# Item.Name %></h2>
+                            </asp:HyperLink>
+                            <span><%#: Item.Released.Year %></span>
+                        </div>
+                        <uc:AlbumSongsControl ID="AlbumSongsControl1" runat="server" AlbumID="<%#: Item.AlbumID %>" />
                     </ItemTemplate>
                 </asp:ListView>
             </div>
@@ -42,7 +60,7 @@
                     <asp:RequiredFieldValidator runat="server" ErrorMessage="Name is requiered" ControlToValidate="Name" Display="None" />
                 </div>
                 <div>
-                    <span>Formed</span> <asp:TextBox ID="Formed" runat="server" TextMode="Date" Text='<%# Bind("Formed", "{0:yyyy-MM-dd}")%>' MaxLength="10" Columns="10" />
+                    <span>Formed</span> <asp:TextBox ID="Formed" runat="server" TextMode="Date" Text='<%# Bind("Formed", "{0:yyyy-MM-dd}") %>' MaxLength="10" Columns="10" />
                     <asp:RequiredFieldValidator runat="server" ErrorMessage="Formed is requiered" ControlToValidate="Formed" Display="None" />
                     <asp:RegularExpressionValidator runat="server" ErrorMessage="Formed is not a valid date" ControlToValidate="Formed" Display="None" ValidationExpression="^\d{4}-((0[1-9])|(1[0-2]))-(([0-2]\d)|(3[01]))$" />
                 </div>
@@ -70,7 +88,7 @@
                         <ItemTemplate>
                             <li>
                                 <asp:HyperLink runat="server" NavigateUrl='<%#: GetRouteUrl("AlbumDetails", new {id = Item.AlbumID}) %>'>
-                                    <asp:Image ID="Image2" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_150.jpg" %>' />
+                                    <asp:Image ID="Image2" runat="server" ImageUrl='<%#: "~/Content/Images/Albums/" + Item.AlbumID + "_60.jpg" %>' />
                                     <%# Item.Name %>
                                 </asp:HyperLink>
                             </li>

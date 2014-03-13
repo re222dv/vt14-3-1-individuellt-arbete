@@ -9,6 +9,7 @@ namespace IV.App_Start {
 
         public static void RegisterRoutes(RouteCollection routes) {
             routes.MapPageRoute("Albums", "albums/", "~/Pages/AlbumPages/Albums.aspx");
+            routes.MapPageRoute("AlbumNewVarious", "albums/new", "~/Pages/AlbumPages/NewAlbum.aspx");
             routes.MapPageRoute("AlbumDetails", "albums/{id}", "~/Pages/AlbumPages/AlbumDetails.aspx");
             routes.MapPageRoute("AlbumDelete", "albums/{id}/delete", "~/Pages/AlbumPages/AlbumDelete.aspx");
             routes.MapPageRoute("Artists", "artists/", "~/Pages/ArtistPages/Artists.aspx");

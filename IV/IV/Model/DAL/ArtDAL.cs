@@ -8,7 +8,10 @@ using System.Web;
 namespace IV.Model.DAL {
     public class ArtDAL {
         public const int ALBUM_ART_BIG = 270;
-        public const int ALBUM_ART_SMALL = 150;
+        public const int ALBUM_ART_MEDIUM = 150;
+        public const int ALBUM_ART_SMALL = 60;
+        public const int ARTIST_ART_SMALL_WIDTH = 240;
+        public const int ARTIST_ART_SMALL_HEIGHT = 100;
 
         public static readonly String PhysicalAlbumArtPath;
         public static readonly String PhysicalArtistArtPath;
@@ -44,6 +47,9 @@ namespace IV.Model.DAL {
             return image.RawFormat.Guid == System.Drawing.Imaging.ImageFormat.Jpeg.Guid;
         }
 
+        /// <summary>
+        /// Creates an image with the specified size times size
+        /// </summary>
         public static void PrepareAlbumArt(int albumId, int size) {
             var path = Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, size));
 
@@ -51,18 +57,35 @@ namespace IV.Model.DAL {
                 var orig = Image.FromFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}.jpg", albumId)));
                 var resized = orig.GetThumbnailImage(size, size, null, System.IntPtr.Zero);
                 resized.Save(path);
+
                 orig.Dispose();
                 resized.Dispose();
             }
         }
 
-        private static void PrepareArtistArt(int artistId, int width, int height) {
+        /// <summary>
+        /// Creates an image with atleast the specified width and height while keeping the aspect ratio
+        /// </summary>
+        public static void PrepareArtistArt(int artistId, int width, int height) {
             var path = Path.Combine(PhysicalArtistArtPath, String.Format("{0}_{1}x{2}.jpg", artistId, width, height));
 
             if (!File.Exists(path)) {
                 var orig = Image.FromFile(Path.Combine(PhysicalArtistArtPath, String.Format("{0}.jpg", artistId)));
+
+                double ratio;
+
+                if (orig.Width / width < orig.Height / height) {
+                    ratio = orig.Width / (double) width;
+                } else {
+                    ratio = orig.Height / (double) height;
+                }
+
+                width = (int) Math.Round(orig.Width / ratio);
+                height = (int) Math.Round(orig.Height / ratio);
+
                 var resized = orig.GetThumbnailImage(width, height, null, System.IntPtr.Zero);
                 resized.Save(path);
+
                 orig.Dispose();
                 resized.Dispose();
             }
@@ -74,6 +97,7 @@ namespace IV.Model.DAL {
         public static void DeleteAlbumArt(int albumId) {
             DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}.jpg", albumId)));
             DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_BIG)));
+            DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_MEDIUM)));
             DeleteFile(Path.Combine(PhysicalAlbumArtPath, String.Format("{0}_{1}.jpg", albumId, ALBUM_ART_SMALL)));
         }
 
@@ -82,6 +106,7 @@ namespace IV.Model.DAL {
         /// </summary>
         public static void DeleteArtistArt(int artistId) {
             DeleteFile(Path.Combine(PhysicalArtistArtPath, String.Format("{0}.jpg", artistId)));
+            DeleteFile(Path.Combine(PhysicalArtistArtPath, String.Format("{0}_{1}x{2}.jpg", artistId, ARTIST_ART_SMALL_WIDTH, ARTIST_ART_SMALL_HEIGHT)));
         }
 
         /// <summary>
@@ -99,6 +124,7 @@ namespace IV.Model.DAL {
             stream.Dispose();
 
             PrepareAlbumArt(albumId, ALBUM_ART_BIG);
+            PrepareAlbumArt(albumId, ALBUM_ART_MEDIUM);
             PrepareAlbumArt(albumId, ALBUM_ART_SMALL);
         }
 
@@ -116,7 +142,7 @@ namespace IV.Model.DAL {
             image.Dispose();
             stream.Dispose();
 
-            //TODO
+            PrepareArtistArt(artistId, ARTIST_ART_SMALL_WIDTH, ARTIST_ART_SMALL_HEIGHT);
         }
     }
 }

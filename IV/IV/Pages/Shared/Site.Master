@@ -16,6 +16,9 @@
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="<%$ RouteUrl:routename=Albums %>">
                     Albums
                 </asp:HyperLink>
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="<%$ RouteUrl:routename=AlbumNewVarious %>">
+                    New Album
+                </asp:HyperLink>
                 <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="<%$ RouteUrl:routename=ArtistNew %>">
                     New Artist
                 </asp:HyperLink>
@@ -24,9 +27,10 @@
             <asp:Panel ID="SuccessPanel" runat="server">
                 <asp:Label ID="SuccessLabel" runat="server"></asp:Label>
             </asp:Panel>
+            
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="error" />
 
             <div id="container">
-                <asp:ValidationSummary runat="server" CssClass="error" />
                 <asp:ContentPlaceHolder ID="Content" runat="server" />
             </div>
 

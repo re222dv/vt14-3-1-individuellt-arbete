@@ -30,11 +30,11 @@ namespace IV.Model.DAL {
         /// <summary>
         /// Get a song from the database
         /// </summary>
-        public static Song GetSongById(int songId) {
+        public static SongArtist GetSongById(int songId) {
             try {
                 using (SqlConnection conn = CreateConnection()) {
 
-                    SqlCommand cmd = new SqlCommand("appScheme.SongsGet", conn);
+                    SqlCommand cmd = new SqlCommand("appScheme.SongGet", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@SongID", SqlDbType.Int, 4).Value = songId;
@@ -49,15 +49,17 @@ namespace IV.Model.DAL {
                         var numberIndex = reader.GetOrdinal("Number");
                         var nameIndex = reader.GetOrdinal("Name");
                         var lengthIndex = reader.GetOrdinal("Length");
+                        var artistNameIndex = reader.GetOrdinal("ArtistName");
 
                         if (reader.Read()) {
-                            return new Song {
+                            return new SongArtist {
                                 SongID = reader.GetInt32(songIDIndex),
                                 AlbumID = reader.GetInt32(albumIDIndex),
                                 ArtistID = reader.GetInt32(artistIDIndex),
                                 Number = reader.GetByte(numberIndex),
                                 Name = reader.GetString(nameIndex),
-                                Length = reader.GetInt16(lengthIndex)
+                                Length = reader.GetInt16(lengthIndex),
+                                ArtistName = reader.GetString(artistNameIndex)
                             };
                         }
                     }
@@ -72,10 +74,10 @@ namespace IV.Model.DAL {
         /// <summary>
         /// Get an albums songs from the database
         /// </summary>
-        public static IEnumerable<Song> GetSongsByAlbumId(int albumID) {
+        public static IEnumerable<SongArtist> GetSongsByAlbumId(int albumID) {
             try {
                 using (SqlConnection conn = CreateConnection()) {
-                    var songs = new List<Song>(15);
+                    var songs = new List<SongArtist>(15);
 
                     SqlCommand cmd = new SqlCommand("appScheme.SongsGet", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -92,15 +94,17 @@ namespace IV.Model.DAL {
                         var numberIndex = reader.GetOrdinal("Number");
                         var nameIndex = reader.GetOrdinal("Name");
                         var lengthIndex = reader.GetOrdinal("Length");
+                        var artistNameIndex = reader.GetOrdinal("ArtistName");
 
                         while (reader.Read()) {
-                            songs.Add(new Song {
+                            songs.Add(new SongArtist {
                                 SongID = reader.GetInt32(songIDIndex),
                                 AlbumID = reader.GetInt32(albumIDIndex),
                                 ArtistID = reader.GetInt32(artistIDIndex),
                                 Number = reader.GetByte(numberIndex),
                                 Name = reader.GetString(nameIndex),
-                                Length = reader.GetInt16(lengthIndex)
+                                Length = reader.GetInt16(lengthIndex),
+                                ArtistName = reader.GetString(artistNameIndex)
                             });
                         }
                     }

@@ -29,8 +29,25 @@ namespace IV.Pages {
             }
         }
 
+        public IEnumerable<Album> AppearsAlbumListView_GetData([RouteData]int id) {
+            try {
+                return Service.GetAlbumsArtistAppearsOn(id);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the albums from the database");
+                return null;
+            }
+        }
+
         public void ArtistFormView_UpdateItem(int ArtistID) {
-            Artist item = Service.GetArtistById(ArtistID);
+            Artist item;
+
+            try {
+                item = Service.GetArtistById(ArtistID);
+            } catch {
+                ModelState.AddModelError(String.Empty, "An error occured when getting the artist from the databasee");
+                return;
+            }
+
             if (item == null) {
                 ModelState.AddModelError(String.Empty, String.Format("Artist with id {0} was not found", ArtistID));
                 return;

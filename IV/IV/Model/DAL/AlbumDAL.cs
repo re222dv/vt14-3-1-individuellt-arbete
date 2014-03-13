@@ -53,10 +53,10 @@ namespace IV.Model.DAL {
                         while (reader.Read()) {
                             albums.Add(new AlbumArtist {
                                 AlbumID = reader.GetInt32(albumIDIndex),
-                                ArtistID = reader.GetInt32(artistIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
                                 Name = reader.GetString(nameIndex),
                                 Released = reader.GetDateTime(releasedIndex),
-                                ArtistName = reader.GetString(artistNameIndex),
+                                ArtistName = reader.IsDBNull(artistNameIndex) ? null : reader.GetString(artistNameIndex),
                             });
                         }
                     }
@@ -92,10 +92,10 @@ namespace IV.Model.DAL {
 
                             return new AlbumArtist {
                                 AlbumID = reader.GetInt32(albumIDIndex),
-                                ArtistID = reader.GetInt32(artistIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
                                 Name = reader.GetString(nameIndex),
                                 Released = reader.GetDateTime(releasedIndex),
-                                ArtistName = reader.GetString(artistNameIndex),
+                                ArtistName = reader.IsDBNull(artistNameIndex) ? null : reader.GetString(artistNameIndex),
                             };
                         }
                     }
@@ -132,7 +132,46 @@ namespace IV.Model.DAL {
                         while (reader.Read()) {
                             albums.Add(new Album {
                                 AlbumID = reader.GetInt32(albumIDIndex),
-                                ArtistID = reader.GetInt32(artistIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
+                                Name = reader.GetString(nameIndex),
+                                Released = reader.GetDateTime(releasedIndex),
+                            });
+                        }
+                    }
+
+                    return albums;
+                }
+            } catch {
+                throw new ApplicationException("An error occured while getting the albums from the database.");
+            }
+        }
+
+        /// <summary>
+        /// Get an artists albums from the database
+        /// </summary>
+        public static IEnumerable<Album> GetAlbumsArtistAppearsOn(int artistID) {
+            try {
+                using (SqlConnection conn = CreateConnection()) {
+                    var albums = new List<Album>(15);
+
+                    SqlCommand cmd = new SqlCommand("appScheme.AlbumsArtistAppearsGet", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@ArtistID", SqlDbType.Int, 4).Value = artistID;
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+
+                        var albumIDIndex = reader.GetOrdinal("AlbumID");
+                        var artistIDIndex = reader.GetOrdinal("ArtistID");
+                        var nameIndex = reader.GetOrdinal("Name");
+                        var releasedIndex = reader.GetOrdinal("Released");
+
+                        while (reader.Read()) {
+                            albums.Add(new Album {
+                                AlbumID = reader.GetInt32(albumIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
                                 Name = reader.GetString(nameIndex),
                                 Released = reader.GetDateTime(releasedIndex),
                             });
