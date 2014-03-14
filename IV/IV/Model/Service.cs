@@ -26,6 +26,13 @@ namespace IV.Model {
         }
 
         /// <summary>
+        /// Get albums page wise
+        /// </summary>
+        public static IEnumerable<AlbumArtist> GetAlbumsPageWise(int maximumRows, int startRowIndex, out int totalRowCount) {
+            return AlbumDAL.GetAlbumsPageWise(maximumRows, startRowIndex, out totalRowCount);
+        }
+
+        /// <summary>
         /// Get an album
         /// </summary>
         public static AlbumArtist GetAlbumById(int albumID) {
@@ -44,6 +51,13 @@ namespace IV.Model {
         /// </summary>
         public static IEnumerable<Album> GetAlbumsArtistAppearsOn(int artistID) {
             return AlbumDAL.GetAlbumsArtistAppearsOn(artistID);
+        }
+
+        /// <summary>
+        /// Search albums in the database
+        /// </summary>
+        public static IEnumerable<AlbumArtist> SearchAlbums(String query) {
+            return AlbumDAL.SearchAlbums(query);
         }
         
         /// <summary>
@@ -88,6 +102,13 @@ namespace IV.Model {
         /// </summary>
         public static Artist GetArtistById(int artistID) {
             return ArtistDAL.GetArtistById(artistID);
+        }
+
+        /// <summary>
+        /// Search artists
+        /// </summary>
+        public static IEnumerable<Artist> SearchArtists(String query) {
+            return ArtistDAL.SearchArtists(query);
         }
 
         /// <summary>

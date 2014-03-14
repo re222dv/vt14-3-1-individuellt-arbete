@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Albums.aspx.cs" Inherits="IV.Pages.Albums" %>
 <asp:Content ContentPlaceHolderID="Content" runat="server">
-    <asp:ListView runat="server" DataKeyNames="AlbumID"
+    <asp:ListView runat="server" ID="ListView" DataKeyNames="AlbumID"
         ItemType="IV.Model.AlbumArtist"
         SelectMethod="ListView_GetData">
         <LayoutTemplate>
@@ -20,4 +20,12 @@
             </li>
         </ItemTemplate>
     </asp:ListView>
+
+    <asp:DataPager ID="DataPager" runat="server" PageSize="10" PagedControlID="ListView" >
+        <Fields>
+            <asp:NextPreviousPagerField ShowNextPageButton="false" PreviousPageText="<" />
+            <asp:NumericPagerField ButtonType="Link" ButtonCount="10" />
+            <asp:NextPreviousPagerField ShowPreviousPageButton="false" NextPageText=">" />
+        </Fields>
+    </asp:DataPager>
 </asp:Content>

@@ -10,7 +10,10 @@
     <body>
         <form id="form" runat="server">
             <nav>
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="<%$ RouteUrl:routename=Artists %>">
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="<%$ RouteUrl:routename=Search %>">
+                    Search
+                </asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="<%$ RouteUrl:routename=Artists %>">
                     Artists
                 </asp:HyperLink>
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="<%$ RouteUrl:routename=Albums %>">

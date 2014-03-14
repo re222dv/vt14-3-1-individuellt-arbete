@@ -109,6 +109,8 @@ namespace IV.Model.DAL {
                         }
                     }
 
+                    songs.TrimExcess();
+
                     return songs;
                 }
             } catch {

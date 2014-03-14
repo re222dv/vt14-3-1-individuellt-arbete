@@ -27,7 +27,7 @@ namespace IV.Pages.ArtistPages {
             try {
                 Service.DeleteArtist(artistId);
 
-                Page.SetTempData("SuccessMessage", "The artist was removed.");
+                this.SetTempData("SuccessMessage", "The artist was removed.");
                 Response.RedirectToRoute("Artists");
                 Context.ApplicationInstance.CompleteRequest();
             } catch {

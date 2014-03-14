@@ -61,6 +61,57 @@ namespace IV.Model.DAL {
                         }
                     }
 
+                    albums.TrimExcess();
+
+                    return albums;
+                }
+            } catch {
+                throw new ApplicationException("An error occured while getting albums from the database.");
+            }
+        }
+
+
+        /// <summary>
+        /// Get albums page wise from the database
+        /// </summary>
+        public static IEnumerable<AlbumArtist> GetAlbumsPageWise(int maximumRows, int startRowIndex, out int totalRowCount) {
+            try {
+                using (SqlConnection conn = CreateConnection()) {
+                    var albums = new List<AlbumArtist>(maximumRows);
+
+                    SqlCommand cmd = new SqlCommand("appScheme.AlbumsGetPageWise", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Start", SqlDbType.Int, 4).Value = startRowIndex;
+                    cmd.Parameters.Add("@Rows", SqlDbType.Int, 4).Value = maximumRows;
+
+                    cmd.Parameters.Add("@Total", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+
+                        var albumIDIndex = reader.GetOrdinal("AlbumID");
+                        var artistIDIndex = reader.GetOrdinal("ArtistID");
+                        var nameIndex = reader.GetOrdinal("Name");
+                        var releasedIndex = reader.GetOrdinal("Released");
+                        var artistNameIndex = reader.GetOrdinal("ArtistName");
+
+                        while (reader.Read()) {
+                            albums.Add(new AlbumArtist {
+                                AlbumID = reader.GetInt32(albumIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
+                                Name = reader.GetString(nameIndex),
+                                Released = reader.GetDateTime(releasedIndex),
+                                ArtistName = reader.IsDBNull(artistNameIndex) ? null : reader.GetString(artistNameIndex),
+                            });
+                        }
+                    }
+
+                    totalRowCount = (int) cmd.Parameters["@Total"].Value;
+
+                    albums.TrimExcess();
+
                     return albums;
                 }
             } catch {
@@ -139,6 +190,8 @@ namespace IV.Model.DAL {
                         }
                     }
 
+                    albums.TrimExcess();
+
                     return albums;
                 }
             } catch {
@@ -178,10 +231,55 @@ namespace IV.Model.DAL {
                         }
                     }
 
+                    albums.TrimExcess();
+
                     return albums;
                 }
             } catch {
                 throw new ApplicationException("An error occured while getting the albums from the database.");
+            }
+        }
+
+        /// <summary>
+        /// Search albums in the database
+        /// </summary>
+        public static IEnumerable<AlbumArtist> SearchAlbums(String query) {
+            try {
+                using (SqlConnection conn = CreateConnection()) {
+                    var albums = new List<AlbumArtist>(20);
+
+                    SqlCommand cmd = new SqlCommand("appScheme.AlbumsSearch", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@Query", SqlDbType.VarChar, 35).Value = query;
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+
+                        var albumIDIndex = reader.GetOrdinal("AlbumID");
+                        var artistIDIndex = reader.GetOrdinal("ArtistID");
+                        var nameIndex = reader.GetOrdinal("Name");
+                        var releasedIndex = reader.GetOrdinal("Released");
+                        var artistNameIndex = reader.GetOrdinal("ArtistName");
+
+                        while (reader.Read()) {
+                            albums.Add(new AlbumArtist {
+                                AlbumID = reader.GetInt32(albumIDIndex),
+                                ArtistID = reader.IsDBNull(artistIDIndex) ? null : (int?) reader.GetInt32(artistIDIndex),
+                                Name = reader.GetString(nameIndex),
+                                Released = reader.GetDateTime(releasedIndex),
+                                ArtistName = reader.IsDBNull(artistNameIndex) ? null : reader.GetString(artistNameIndex),
+                            });
+                        }
+                    }
+
+                    albums.TrimExcess();
+
+                    return albums;
+                }
+            } catch {
+                throw new ApplicationException("An error occured while getting albums from the database.");
             }
         }
 

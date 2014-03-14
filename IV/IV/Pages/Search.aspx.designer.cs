@@ -10,24 +10,33 @@
 namespace IV.Pages {
     
     
-    public partial class Albums {
+    public partial class Search {
         
         /// <summary>
-        /// ListView control.
+        /// SearchBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView;
+        protected global::System.Web.UI.WebControls.TextBox SearchBox;
         
         /// <summary>
-        /// DataPager control.
+        /// ArtistListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager DataPager;
+        protected global::System.Web.UI.WebControls.ListView ArtistListView;
+        
+        /// <summary>
+        /// AlbumListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView AlbumListView;
     }
 }

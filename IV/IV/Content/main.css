@@ -605,6 +605,11 @@ nav a:nth-last-child(2), nav a:last-child {
     margin-left: 0;
 }
 
+#albums li:last-child {
+    margin-bottom: 30px;
+}
+
+
 #albums img {
     position: absolute;
     top: 5px;
@@ -634,6 +639,34 @@ nav a:nth-last-child(2), nav a:last-child {
 
 #albums ~ div {
     clear: left;
+}
+
+#Content_DataPager  {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+
+    width: 100%;
+
+    background-color: #444;
+    border-top: 1px solid #000;
+
+    text-align: center;
+}
+
+#Content_DataPager span, #Content_DataPager a {
+    color: #666;
+    text-decoration: none;
+}
+
+
+#Content_DataPager a[href] {
+    color: #999;
+    text-decoration: none;
 }
 
 #songs th:first-child {

@@ -57,6 +57,55 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Albums\1.jpg" />
+    <Content Include="Content\Images\Albums\10.jpg" />
+    <Content Include="Content\Images\Albums\10_150.jpg" />
+    <Content Include="Content\Images\Albums\10_270.jpg" />
+    <Content Include="Content\Images\Albums\10_60.jpg" />
+    <Content Include="Content\Images\Albums\11.jpg" />
+    <Content Include="Content\Images\Albums\11_150.jpg" />
+    <Content Include="Content\Images\Albums\11_270.jpg" />
+    <Content Include="Content\Images\Albums\11_60.jpg" />
+    <Content Include="Content\Images\Albums\14.jpg" />
+    <Content Include="Content\Images\Albums\14_150.jpg" />
+    <Content Include="Content\Images\Albums\14_270.jpg" />
+    <Content Include="Content\Images\Albums\14_60.jpg" />
+    <Content Include="Content\Images\Albums\15.jpg" />
+    <Content Include="Content\Images\Albums\15_150.jpg" />
+    <Content Include="Content\Images\Albums\15_270.jpg" />
+    <Content Include="Content\Images\Albums\15_60.jpg" />
+    <Content Include="Content\Images\Albums\16.jpg" />
+    <Content Include="Content\Images\Albums\16_150.jpg" />
+    <Content Include="Content\Images\Albums\16_270.jpg" />
+    <Content Include="Content\Images\Albums\16_60.jpg" />
+    <Content Include="Content\Images\Albums\1_150.jpg" />
+    <Content Include="Content\Images\Albums\1_270.jpg" />
+    <Content Include="Content\Images\Albums\1_60.jpg" />
+    <Content Include="Content\Images\Albums\2.jpg" />
+    <Content Include="Content\Images\Albums\2_150.jpg" />
+    <Content Include="Content\Images\Albums\2_270.jpg" />
+    <Content Include="Content\Images\Albums\2_60.jpg" />
+    <Content Include="Content\Images\Albums\7.jpg" />
+    <Content Include="Content\Images\Albums\7_150.jpg" />
+    <Content Include="Content\Images\Albums\7_270.jpg" />
+    <Content Include="Content\Images\Albums\7_60.jpg" />
+    <Content Include="Content\Images\Albums\8.jpg" />
+    <Content Include="Content\Images\Albums\8_150.jpg" />
+    <Content Include="Content\Images\Albums\8_270.jpg" />
+    <Content Include="Content\Images\Albums\8_60.jpg" />
+    <Content Include="Content\Images\Albums\9.jpg" />
+    <Content Include="Content\Images\Albums\9_150.jpg" />
+    <Content Include="Content\Images\Albums\9_270.jpg" />
+    <Content Include="Content\Images\Albums\9_60.jpg" />
+    <Content Include="Content\Images\Artists\12.jpg" />
+    <Content Include="Content\Images\Artists\12_240x100.jpg" />
+    <Content Include="Content\Images\Artists\14.jpg" />
+    <Content Include="Content\Images\Artists\14_240x100.jpg" />
+    <Content Include="Content\Images\Artists\16.jpg" />
+    <Content Include="Content\Images\Artists\16_240x100.jpg" />
+    <Content Include="Content\Images\Artists\7.jpg" />
+    <Content Include="Content\Images\Artists\7_240x100.jpg" />
+    <Content Include="Content\Images\background.svg" />
     <Content Include="Content\main.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\AlbumPages\AlbumDelete.aspx" />
@@ -67,10 +116,12 @@
     <Content Include="Pages\ArtistPages\Artists.aspx" />
     <Content Include="Pages\AlbumPages\AlbumDetails.aspx" />
     <Content Include="Pages\AlbumPages\Albums.aspx" />
+    <Content Include="Pages\Search.aspx" />
     <Content Include="Pages\Shared\AlbumSongsControl.ascx" />
     <Content Include="Pages\Shared\EditAlbumSongsControl.ascx" />
     <Content Include="Pages\Shared\Error.aspx" />
     <Content Include="Pages\Shared\Site.Master" />
+    <None Include="Properties\PublishProfiles\Falken.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -152,6 +203,13 @@
     <Compile Include="Pages\AlbumPages\Albums.aspx.designer.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Shared\AlbumSongsControl.ascx.cs">
       <DependentUpon>AlbumSongsControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -191,10 +249,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Images\Albums\" />
-    <Folder Include="Content\Images\Artists\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

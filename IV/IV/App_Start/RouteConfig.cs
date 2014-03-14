@@ -18,6 +18,7 @@ namespace IV.App_Start {
             routes.MapPageRoute("ArtistDelete", "artists/{id}/delete", "~/Pages/ArtistPages/ArtistDelete.aspx");
             routes.MapPageRoute("AlbumNew", "artists/{artistId}/newalbum", "~/Pages/AlbumPages/NewAlbum.aspx");
 
+            routes.MapPageRoute("Search", "search/", "~/Pages/Search.aspx");
             routes.MapPageRoute("Error", "error", "~/Pages/Shared/Error.aspx");
             routes.MapPageRoute("Default", "", "~/Pages/ArtistPages/Artists.aspx");
         }
