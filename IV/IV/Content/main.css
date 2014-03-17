@@ -10,7 +10,7 @@
     background-color: #111;
     background-image: radial-gradient(circle at center 45%, rgba(200, 200, 200, 0.8) 0%, rgba(16, 16, 16, 0) 80%, rgba(16, 16, 16, 0.5) 100%), url(Images/background.svg);
 
-    font-family: Arial, sans-serif;
+    font-family: "Century Gothic", Arial, sans-serif;
 }
 
 nav {
@@ -81,6 +81,7 @@ nav a:nth-last-child(2), nav a:last-child {
     padding: 20px;
 
     width: 920px;
+    min-height: 300px;
 
     background-color: #ddd9c5;
     border: 2px solid #111;
@@ -135,7 +136,7 @@ nav a:nth-last-child(2), nav a:last-child {
     position: relative;
     top: -120px;
     left: 290px;
-    margin-bottom: -100px;
+    margin-bottom: -185px;
 
     width: 600px;
     border-collapse: collapse;

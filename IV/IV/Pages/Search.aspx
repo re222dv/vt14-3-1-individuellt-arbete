@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="IV.Pages.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <asp:TextBox ID="SearchBox" runat="server" />
-    <asp:Button runat="server" Text="Button" OnClick="Search_Click" />
+    <asp:Button runat="server" Text="Search" OnClick="Search_Click" />
     
     <asp:ListView runat="server" ID="ArtistListView" DataKeyNames="ArtistID"
         ItemType="IV.Model.Artist"
